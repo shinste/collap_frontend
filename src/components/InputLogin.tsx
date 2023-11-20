@@ -6,7 +6,6 @@ import TextField from '@mui/material/TextField'
 import { useNavigate } from 'react-router-dom';
 import { styled, createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-import '../App.css'
 
 const theme = createTheme({
     palette: {

@@ -28,7 +28,7 @@ const Homepage = () => {
     return (
       <div>
         <h1>Welcome to the Homepage</h1>
-        <Typography variant="body1" sx={{ fontSize: '12px', fontFamily: 'Bell MT' }}><Link to="/event/create">Create Event Page</Link></Typography>
+        <Typography variant="body1" sx={{ fontSize: '12px' }}><Link to="/event/create">Create Event Page</Link></Typography>
         {/* <UsernameContext.Provider value={{username, setUsername}}> */}
           {/* <Typography>{username}</Typography>
         </UsernameContext.Provider> */}
