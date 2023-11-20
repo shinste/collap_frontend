@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Homepage from './pages/Homepage';
 import CreateEvent from './pages/CreateEvent';
+import './App.css'
 
 const App = () => {
   return (
@@ -17,4 +18,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App; 

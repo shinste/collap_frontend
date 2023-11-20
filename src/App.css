@@ -48,3 +48,11 @@
   align-items: center;
   justify-content: center;
 }
+
+.MuiTypography-root {
+  font-family: "Comic Sans MS";
+}
+
+p {
+  font-family: "Roboto";
+}

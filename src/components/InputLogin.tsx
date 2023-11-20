@@ -6,8 +6,7 @@ import TextField from '@mui/material/TextField'
 import { useNavigate } from 'react-router-dom';
 import { styled, createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-
-
+import '../App.css'
 
 const theme = createTheme({
     palette: {
@@ -69,8 +68,8 @@ const InputLogin = () => {
     return (
         <Box sx={{ margin: 'auto'}}>
             <Box sx={{ margin: '80px'}}>
-                <Typography variant="h3" sx={{ fontSize: '30px', margin: '30px', marginRight: '50px', fontFamily: 'Roboto', color:"#000000" }}> Welcome to Collap!👋</Typography>
-                <Typography variant="h6" sx={{ fontSize: '15px', margin: '30px', marginLeft: '35px', fontFamily: 'Roboto', color: '#444444' }}> Log in to get started.</Typography>
+                <Typography variant="h3" sx={{ fontSize: '30px', margin: '30px', marginRight: '50px', color:"#000000" }}> Welcome to Collap!👋</Typography>
+                <Typography variant="h6" sx={{ fontSize: '15px', margin: '30px', marginLeft: '35px', color: '#444444' }}> Log in to get started.</Typography>
             </Box>
             <form onSubmit={handleSubmit}>
                 <Box sx={{ margin: '-50px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>

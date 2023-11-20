@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* typography {
+  font-family: "Droid Sans";
+} */
+
+.App-link {
+  color: #041216;
+}

@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom';
 import calendar from '../images/calendarimg.png';
 import Showcase from '../components/Showcase';
 import InputLogin from '../components/InputLogin'
+import '../App.css';
+
 
 const theme = createTheme({
   palette: {
@@ -58,7 +60,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Box sx={{
-          display: 'flex'
+          display: 'flex',
         }}>
           <Box
             sx={{
@@ -73,14 +75,14 @@ function App() {
               backgroundColor: 'white',
             }}
           >
-            <>
+            <section>
               <InputLogin />
-            </>
-            <Typography variant="body1" sx={{ fontSize: '12px', fontFamily: 'Bell MT' }}>New to Collap? <Link to="/homepage">Get started</Link></Typography>
+            </section>
+            <Typography variant="body1" sx={{ fontSize: '12px' }}>New to Collap? <Link to="/homepage" className="App-link">Get started</Link></Typography>
           </Box>
-          <>
+          <section>
             <Showcase />
-          </>
+          </section>
           
         </Box>
       </ThemeProvider>
