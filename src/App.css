@@ -49,10 +49,39 @@
   justify-content: center;
 }
 
-.MuiTypography-root {
-  font-family: "Comic Sans MS";
+.login-box {
+  width: 33vw;
+  height: 100vh;
 }
 
-p {
+* {
   font-family: "Roboto";
 }
+
+.center {
+  bottom: 50vh;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.sub_div {
+  position:absolute;
+  bottom: 0px;
+  text-align: center;
+}
+
+.vertical-center {
+  position: absolute;
+  top: 50%;
+  /* -ms-transform: translateY(-50%); */
+  transform: translateY(-50%);
+}
+
+
+

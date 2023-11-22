@@ -65,54 +65,31 @@ const InputLogin = () => {
     }
 
     return (
-        <Box sx={{ margin: 'auto'}}>
-            <Box sx={{ margin: '80px'}}>
-                <Typography variant="h3" sx={{ fontSize: '30px', margin: '30px', marginRight: '50px', color:"#000000" }}> Welcome to Collap!👋</Typography>
-                <Typography variant="h6" sx={{ fontSize: '15px', margin: '30px', marginLeft: '35px', color: '#444444' }}> Log in to get started.</Typography>
-            </Box>
-            <form onSubmit={handleSubmit}>
-                <Box sx={{ margin: '-50px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                    <TextField
-                        label="Username"
-                        onChange={handleUsernameChange}
-                        size='small'
-                        color='primary'
-                        sx={{
-                        width: '300px',
-                        size: "small",
-                        margin: 'auto'
-                        }}
-                    />
-                </Box>
-                <Box sx={{ margin: '70px' , display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                    <TextField
-                        label="Password"
-                        type="password"
-                        onChange={handlePasswordChange}
-                        size='small'
-                        color="primary"
-                        InputLabelProps={{
-                            style: {
-                            color: theme.palette.primary.main, // Set label color to primary main color
-                            },
-                        }}
-                        sx={{
-                        width: '300px',
-                        }}
-                />
-                </Box>
-                <Box sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        marginBottom: '100px',
-                        }}>
-                {error && <Typography variant="body1" sx={{ color: 'red' }}>{error}</Typography>}
-                <Button type="submit" variant="contained" color="primary" style={{backgroundColor: "#87976E",}} sx={{ width: '300px'}}>LogIn</Button>
-                </Box>
-        </form>
-    </Box>
-    
+      <div>
+        <div className="bg-light login-box">
+          <div className="vertical-center ">
+            <div className='center'>
+              <div className = "left">
+                <h3>Welcome to Collap!👋</h3>
+                <h6>Log in to get started.</h6>
+              </div>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-5 mt-3">
+                  <Box>
+                      <TextField label="Username" onChange={handleUsernameChange} size='small' sx={{width: '300px', size: "small"}}/>
+                      <TextField className="mt-3" label="Password" type="password" onChange={handlePasswordChange} size='small' sx={{width: '300px'}}/>
+                  </Box>
+                </div>
+                  {error && <Typography variant="body1" sx={{ color: 'red' }}>{error}</Typography>}
+                  <Button type="submit" variant="contained" color="primary" style={{backgroundColor: "#87976E",}} sx={{ width: '300px'}}>LogIn</Button>
+                </form>
+              </div>
+          </div>
+          <div className="sub_div justify-content-center">
+            <Typography variant="body1" sx={{ fontSize: '12px' }}>New to Collap? <Link to="/homepage" className="App-link">Get started</Link></Typography>
+          </div>
+        </div>
+      </div>  
     )
 }
 

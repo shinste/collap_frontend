@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import calendar from '../images/calendarimg.png';
 import Typography from '@mui/material/Typography';
+import '../App.css'
 
 // const [createpage, setcreatepage] = useState('') 
 
@@ -12,11 +13,11 @@ import Typography from '@mui/material/Typography';
 const Showcase = () => {
     return (
         <Box className="container-fluid">
-            <Box sx={{textAlign: 'left'}}>
-              <h2> Start Planning Events with Collap</h2>
-              <Typography variant="h5" sx={{ fontSize: '20px', marginTop: '20px', marginRight: '50px', color:"#000000" }}> Efficient event planning and enhanced participation begins here.</Typography>            
+            <Box className='mb-0 mt-5 ms-3 px-5'>
+              <h1> Start Planning Events with Collap</h1>
+              <h5> Efficient event planning and enhanced participation begins here.</h5>            
             </Box>
-            <Box className="p-0 m-0" >
+            <Box className="p-n5 m-n5" >
               <img src={calendar} alt="calendar" />
             </Box>
         </Box>

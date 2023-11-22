@@ -62,32 +62,17 @@ function App() {
         <Box sx={{
           display: 'flex',
         }}>
-          <Box
-            sx={{
-              width: '35vw',
-              height: '100vh',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'flex-end',
-              alignItems: 'center',
-              margin: '0px 200px 0 0px',
-              paddingBottom: '20px',
-              backgroundColor: 'white',
-            }}
-          >
-            <section>
-              <InputLogin />
-            </section>
-            <Typography variant="body1" sx={{ fontSize: '12px' }}>New to Collap? <Link to="/homepage" className="App-link">Get started</Link></Typography>
-          </Box>
+          <section>
+            <InputLogin />
+          </section>
           <section>
             <Showcase />
           </section>
-          
         </Box>
+          
       </ThemeProvider>
-    // </UsernameProvider>                    
-  );
+    // </UsernameProvider>  
+  )                  
 }
 
 
