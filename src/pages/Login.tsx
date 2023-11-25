@@ -19,9 +19,6 @@ const theme = createTheme({
     background: {
       default: '#AFC38E'
     },
-    primary: {
-        main: '#87976E',
-      },
   },
   components: {
     MuiTextField: {
@@ -59,17 +56,18 @@ function App() {
     // <UsernameProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Box sx={{
-          display: 'flex',
-        }}>
-          <section>
-            <InputLogin />
-          </section>
-          <section>
-            <Showcase />
-          </section>
-        </Box>
-          
+          <body >
+            <Box sx={{
+              display: 'flex',
+            }}>
+              <section>
+                <InputLogin />
+              </section>
+              <section>
+                <Showcase />
+              </section>
+            </Box>
+          </body>
       </ThemeProvider>
     // </UsernameProvider>  
   )                  

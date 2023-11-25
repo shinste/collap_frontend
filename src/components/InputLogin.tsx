@@ -51,21 +51,18 @@ const InputLogin = () => {
           setError('');
           navigate('/homepage', { replace: true})
           console.log('Login successful:', data);
-          // Handle successful login, redirect, etc.
         } else {
-          setUsername(''); // Clear username input
-          setPassword(''); // Clear password input
-          setError('Incorrect Password or Username'); // Set error message
-          // Handle failed login, show error message, etc.
+          setUsername('');
+          setPassword('');
+          setError('Incorrect Password or Username');
         }
       } catch (error) {
         console.error('Error:', error);
-        // Handle fetch error
       }
     }
 
     return (
-      <div>
+      <body>
         <div className="bg-light login-box">
           <div className="vertical-center ">
             <div className='center'>
@@ -89,7 +86,7 @@ const InputLogin = () => {
             <Typography variant="body1" sx={{ fontSize: '12px' }}>New to Collap? <Link to="/homepage" className="App-link">Get started</Link></Typography>
           </div>
         </div>
-      </div>  
+      </body>  
     )
 }
 

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 
-const CreateEvent = () => {
+const Notifications = () => {
     return (
       <div>
-        <h1>Create Event Page</h1>
+        <h1>Notifications Page</h1>
       </div>
     );
   };
 
 
-export default CreateEvent;
+export default Notifications;
