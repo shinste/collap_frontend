@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -6,30 +6,28 @@ import TextField from '@mui/material/TextField'
 import { useNavigate } from 'react-router-dom';
 import { styled, createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-
-const theme = createTheme({
-    palette: {
-      background: {
-        default: '#AFC38E'
-      },
-      primary: {
-          main: '#87976E',
-        },
-    },
-});
+import { LoginContext } from '../contexts/UsernameContext';
 
 
-
-
-
+// const theme = createTheme({
+//     palette: {
+//       background: {
+//         default: '#000000'
+//       },
+//       primary: {
+//           main: '#87976E',
+//         },
+//     },
+// });
 
 
 
 
 const InputLogin = () => {
 
+    const {setUsername} = useContext(LoginContext)
+    const {username} = useContext(LoginContext)
     const navigate = useNavigate()
-    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     
@@ -48,9 +46,8 @@ const InputLogin = () => {
         const response = await fetch(`http://127.0.0.1:8000/login/?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
         if (response.ok) {
           const data = await response.json();
-          setError('');
           navigate('/homepage', { replace: true})
-          console.log('Login successful:', data);
+          console.log('Login successful:', username);
         } else {
           setUsername('');
           setPassword('');
@@ -63,9 +60,9 @@ const InputLogin = () => {
 
     return (
       <body>
-        <div className="bg-light login-box">
+        <div className="bg-light left-box">
           <div className="vertical-center ">
-            <div className='center'>
+            <div className='center-left'>
               <div className = "left">
                 <h3>Welcome to Collap!👋</h3>
                 <h6>Log in to get started.</h6>
@@ -78,12 +75,12 @@ const InputLogin = () => {
                   </Box>
                 </div>
                   {error && <Typography variant="body1" sx={{ color: 'red' }}>{error}</Typography>}
-                  <Button type="submit" variant="contained" color="primary" style={{backgroundColor: "#87976E",}} sx={{ width: '300px'}}>LogIn</Button>
+                  <Button type="submit" variant="contained" color="primary" style={{backgroundColor: "#87976E"}} sx={{ borderRadius: "15px", width: '300px'}}>LogIn</Button>
                 </form>
               </div>
           </div>
           <div className="sub_div justify-content-center">
-            <Typography variant="body1" sx={{ fontSize: '12px' }}>New to Collap? <Link to="/homepage" className="App-link">Get started</Link></Typography>
+            <Typography variant="body1" sx={{ fontSize: '12px' }}>New to Collap? <Link to="/registration" className="App-link">Get started</Link></Typography>
           </div>
         </div>
       </body>  

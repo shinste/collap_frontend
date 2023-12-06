@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useContext, useEffect} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import { Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { LoginContext } from '../contexts/UsernameContext';
 
 
 
@@ -29,6 +30,7 @@ const theme = createTheme({
 
 const HomepageHeader = () => {
   const navigate = useNavigate()
+  const {username} = useContext(LoginContext)
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -36,6 +38,19 @@ const HomepageHeader = () => {
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
+
+  if (username) {
+    localStorage.setItem('username', username);
+  }
+
+  useEffect(() => {
+    if (username) {
+        localStorage.setItem('username', username);
+    }
+  }, [username]);
+
+  const storedUsername = localStorage.getItem('username') || '';
+
 
   const handleLogOut = () => {
   
@@ -87,6 +102,15 @@ const HomepageHeader = () => {
     }
   }
 
+  const handleHomePage = () => {
+  
+    try {
+        navigate('/homepage', { replace: true})
+        console.log('Navigated Successfully');
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -112,6 +136,9 @@ const HomepageHeader = () => {
                     </Typography>
                     <ThemeProvider theme={theme} >
                     <div className='flex-container m-3' >
+                            <Button onClick={handleHomePage} sx={{ textTransform: 'capitalize', m: 1 }}>
+                                HomePage
+                            </Button>
                             <Button onClick={handleMyEvents} sx={{ textTransform: 'capitalize', m: 1 }}>
                                 My Events
                             </Button>
@@ -124,11 +151,12 @@ const HomepageHeader = () => {
                             <Button onClick={handleCreateEvent} sx={{ textTransform: 'capitalize', m: 1 }}>
                                 Create an Event
                             </Button>
+                            
                     </div>
                     <div className="position-absolute end-0">
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu}>
-                                <Button>Temp</Button>
+                                <Button>{localStorage.getItem('username')}</Button>
                             </IconButton>
                         </Tooltip>
                         <Menu

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-
-
+import HomepageHeader from '../components/HomepageHeader';
+import CreateEventBox from '../components/CreateEventBox';
 const CreateEvent = () => {
     return (
-      <div>
-        <h1>Create Event Page</h1>
-      </div>
+      <body>
+        <HomepageHeader />
+        <div className='centered-div'>
+          <CreateEventBox />
+        </div>
+      </body>
     );
   };
 

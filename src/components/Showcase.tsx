@@ -3,15 +3,14 @@ import Box from '@mui/material/Box';
 import calendar from '../images/Desktop.png';
 import Typography from '@mui/material/Typography';
 import '../App.css'
+import { styled, createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 
-// const [createpage, setcreatepage] = useState('') 
 
-// const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//   setUsername(e.target.value);
-// };
 
 const Showcase = () => {
     return (
+      // <ThemeProvider theme={theme}>
+      <body className='dark-green'>
         <Box className="container-fluid container-height">
             <Box className='mb-0 mt-5 ms-3 px-5'>
               <h1> Start Planning Events with Collap</h1>
@@ -21,6 +20,8 @@ const Showcase = () => {
               <img className="img overflow-y-hidden" src={calendar} alt="calendar" />
             </Box>
         </Box>
+      </body>
+      // </ThemeProvider>
     );
   };
 

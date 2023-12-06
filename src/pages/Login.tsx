@@ -1,25 +1,12 @@
-import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import TextField from '@mui/material/TextField'
 import { styled, createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import calendar from '../images/calendarimg.png';
 import Showcase from '../components/Showcase';
 import InputLogin from '../components/InputLogin'
 import '../App.css';
 
 
 const theme = createTheme({
-  palette: {
-    background: {
-      default: '#AFC38E'
-    },
-  },
   components: {
     MuiTextField: {
       styleOverrides: {
@@ -54,22 +41,21 @@ function App() {
 
   return (
     // <UsernameProvider>
+    <body >
       <ThemeProvider theme={theme}>
         <CssBaseline />
-          <body >
-            <Box sx={{
-              display: 'flex',
-            }}>
-              <section>
-                <InputLogin />
-              </section>
-              <section>
-                <Showcase />
-              </section>
-            </Box>
-          </body>
+          <Box sx={{
+            display: 'flex',
+          }}>
+            <section>
+              <InputLogin />
+            </section>
+            <section>
+              <Showcase />
+            </section>
+          </Box>
       </ThemeProvider>
-    // </UsernameProvider>  
+    </body>
   )                  
 }
 
