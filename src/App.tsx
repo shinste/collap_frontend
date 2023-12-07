@@ -9,7 +9,35 @@ import MyEvents from './pages/MyEvents';
 import Registration from './pages/Registration';
 import './App.css'
 import { LoginContext } from './contexts/UsernameContext';
+import { styled, createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 
+
+const theme = createTheme({
+  components: {
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '& .MuiOutlinedInput-root': {
+            borderColor: '#87976E', // Use the custom color
+          },
+          '&:hover': {
+            borderColor: '#87976E', // Change border color on hover
+          },
+          '& fieldset': {
+            borderColor: '#87976E', // Set border color when not focused
+          }
+        },
+      },
+      defaultProps: {
+        InputLabelProps: {
+          style: {
+            color: '#87976E', // Use the custom color for label
+          },
+        },
+      },
+    },
+  }
+});
 
 const App = () => {
 
@@ -18,6 +46,7 @@ const App = () => {
 
   return (
     <Router>
+      <ThemeProvider theme={theme}>
       <LoginContext.Provider value={{username, setUsername}}>
       <Routes>
           <Route path="/" element={<Login />} />
@@ -31,6 +60,7 @@ const App = () => {
         {/* Define more routes for other pages as needed */}
       </Routes>
       </LoginContext.Provider>
+      </ThemeProvider>
     </Router>
   );
 };

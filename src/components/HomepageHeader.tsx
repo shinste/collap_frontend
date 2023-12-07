@@ -56,6 +56,7 @@ const HomepageHeader = () => {
   
     try {
         navigate('/', { replace: true})
+        localStorage.setItem('username', "");
         console.log('Logout successful');
     } catch (error) {
       console.error('Error:', error);

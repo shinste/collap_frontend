@@ -6,34 +6,6 @@ import InputLogin from '../components/InputLogin'
 import '../App.css';
 
 
-const theme = createTheme({
-  components: {
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          '& .MuiOutlinedInput-root': {
-            borderColor: '#87976E', // Use the custom color
-          },
-          '&:hover': {
-            borderColor: '#87976E', // Change border color on hover
-          },
-          '& fieldset': {
-            borderColor: '#87976E', // Set border color when not focused
-          }
-        },
-      },
-      defaultProps: {
-        InputLabelProps: {
-          style: {
-            color: '#87976E', // Use the custom color for label
-          },
-        },
-      },
-    },
-  }
-});
-
-
 
 function App() {
 
@@ -42,8 +14,6 @@ function App() {
   return (
     // <UsernameProvider>
     <body >
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
           <Box sx={{
             display: 'flex',
           }}>
@@ -54,7 +24,6 @@ function App() {
               <Showcase />
             </section>
           </Box>
-      </ThemeProvider>
     </body>
   )                  
 }
