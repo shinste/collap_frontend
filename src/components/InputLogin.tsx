@@ -49,8 +49,6 @@ const InputLogin = () => {
           navigate('/homepage', { replace: true})
           console.log('Login successful:', username);
         } else {
-          setUsername('');
-          setPassword('');
           setError('Incorrect Password or Username');
         }
       } catch (error) {

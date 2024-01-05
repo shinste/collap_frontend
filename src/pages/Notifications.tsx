@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Calendar from '../components/Calendar';
-
-
+import HomepageHeader from '../components/HomepageHeader';
+import ActionList from '../components/ActionList';
 const Notifications = () => {
     return (
-      <div>
-        <h1>Notifications Page</h1>
-        <Calendar />
-      </div>
+      <body>
+        <HomepageHeader />
+        <ActionList />
+      </body>
     );
   };
 

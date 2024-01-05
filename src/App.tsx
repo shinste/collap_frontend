@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Homepage from './pages/Homepage';
@@ -10,6 +10,7 @@ import Registration from './pages/Registration';
 import './App.css'
 import { LoginContext } from './contexts/UsernameContext';
 import { styled, createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
 
 const theme = createTheme({
@@ -36,7 +37,12 @@ const theme = createTheme({
         },
       },
     },
-  }
+  },
+  palette: {
+      background: {
+      default: '#FBFBFB', // Set your desired background color here
+    },
+  },
 });
 
 const App = () => {
@@ -47,6 +53,7 @@ const App = () => {
   return (
     <Router>
       <ThemeProvider theme={theme}>
+      <CssBaseline />
       <LoginContext.Provider value={{username, setUsername}}>
       <Routes>
           <Route path="/" element={<Login />} />

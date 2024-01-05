@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-
+import HomepageHeader from '../components/HomepageHeader';
+import { Home } from '@mui/icons-material';
+import HostEventActions from '../components/HostEventActions';
 
 const HostedEvents = () => {
     return (
-      <div>
-        <h1>Hosted Event Page</h1>
-      </div>
+      <body >
+        <HomepageHeader />
+        <HostEventActions />
+      </body>
     );
   };
 
