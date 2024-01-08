@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { FormControl, TextField, Button, Typography } from "@mui/material";
+import { FormControl, Button, Typography } from "@mui/material";
 import DynamicInput from './DynamicInput';
 import getEventInfo from '../functions/getEventInfo';
 import formatTimeRange from '../functions/getTimeRange';
@@ -69,13 +69,11 @@ const JoinPanel = ({ key, eventInfo, status }: JoinProps) => {
                     setError(message)
                 }
                 
-                // setError(message)
                 console.error('Failed to join event:', message);
                 console.log(eventData)
             }
         } catch (errors) {
             console.error('Error:', errors);
-            // setSuccess(false)
             setError('Invalid Request');
         }
     };
@@ -86,7 +84,7 @@ const JoinPanel = ({ key, eventInfo, status }: JoinProps) => {
     console.log(previewData)
 
     if (!Object.keys(previewData).length) {
-        return <div>Loading...</div>; // Render loading indicator while fetching data
+        return <div>Loading...</div>;
     }
     return (
         <div style={{height: '60%'}}>

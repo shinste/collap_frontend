@@ -1,6 +1,6 @@
-import { AppBar, Container, Toolbar, Typography, TextField, Button } from '@mui/material';
+import { Container, Toolbar, Typography, TextField, Button } from '@mui/material';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const Register = () => {

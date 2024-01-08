@@ -1,4 +1,3 @@
-import React from "react";
 
 const formatDate = (inputDate: string) => {
     const months = [

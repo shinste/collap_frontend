@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React from 'react';
 
 const getEvents = async (setEventData: React.Dispatch<React.SetStateAction<any>>, storedUsername: string) => {
   try {

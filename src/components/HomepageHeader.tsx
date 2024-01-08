@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect} from 'react';
+import React, {  useContext, useEffect} from 'react';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -12,7 +11,6 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import { Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../contexts/UsernameContext';
 

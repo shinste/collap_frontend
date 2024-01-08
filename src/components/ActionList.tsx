@@ -1,10 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import getNotifications from '../functions/getNotifications';
 import { Button, Typography, Box } from '@mui/material';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { BorderAllOutlined } from '@mui/icons-material';
 import JoinPanel from './JoinPanel';
 import VotePanel from './VotePanel';
 

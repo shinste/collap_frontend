@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React from 'react';
 
 const getNotifications = async (setEventData: React.Dispatch<React.SetStateAction<any>>, setErrorMessage: React.Dispatch<React.SetStateAction<string>>, storedUsername: string, missed?: React.Dispatch<React.SetStateAction<string>>, action?: React.Dispatch<React.SetStateAction<string>>) => {
     try {

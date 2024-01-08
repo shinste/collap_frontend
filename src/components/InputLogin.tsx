@@ -4,21 +4,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField'
 import { useNavigate } from 'react-router-dom';
-import { styled, createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import { LoginContext } from '../contexts/UsernameContext';
 
-
-// const theme = createTheme({
-//     palette: {
-//       background: {
-//         default: '#000000'
-//       },
-//       primary: {
-//           main: '#87976E',
-//         },
-//     },
-// });
 
 
 

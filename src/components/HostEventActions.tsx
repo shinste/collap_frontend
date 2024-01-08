@@ -1,12 +1,9 @@
-import { Typography, Box, Button, TextField, FormControl, List, Tooltip,
+import { Typography, Box, Button, TextField, FormControl, Tooltip,
         Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
 import { BarChart } from '@mui/x-charts';
 import React, { useState, useEffect } from 'react';
 import LeaveEvent from '../functions/leaveEvent';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { red } from '@mui/material/colors';
 import HostDates from './HostDates';
-import getDate from '../functions/getDate';
 import RankDates from './RankDates';
 
 
@@ -28,7 +25,6 @@ const HostEventActions = () => {
     const [status, setStatus] = useState(false);
     const [inviteUser, setInviteUser] = useState('');
     const [success, setSuccess] = useState('');
-    // const [rankedData, setRankedData] = useState<Record<string, string[]>>({});
 
     const hostedEvents = async () => {
         try {
@@ -224,24 +220,6 @@ const HostEventActions = () => {
     }
 
 
-    // const handleRank = async () => {
-    //     try {
-    //         const response = await fetch(`http://127.0.0.1:8000/ranked/?event_id=${encodeURIComponent(hostData.event_id)}`);
-    //         if (response.ok) {
-    //           const fetchedRankData = await response.json();
-    //           setRankedData(fetchedRankData); // Update state with fetched data
-    //         } else {
-    //           const errorData = await response.json();
-    //           const errorMessage = errorData.error[0];
-    //           console.error('Failed to Query', errorMessage);
-    //         }
-    //       } catch (error) {
-    //         console.error('Error:', error);
-    //       }
-    // }
-
-
-
     useEffect(() => {
         hostedEvents();
         console.log(hostedData);
@@ -386,95 +364,6 @@ const HostEventActions = () => {
                             </div>
                             
                         </Box>
-
-
-                                {/* <div className="scrollable-box p-0" style={{display:"flex", flexWrap: 'wrap', width:'70%', height:'100%'}}>
-
-                                    {value["participants"].map((participant, index) => (
-                                    <div className="mx-3 my-3" style={{width:'13rem', height: "50%"}}>
-                                        <div className="mx-2" style={{flex: 'display', flexDirection: 'column', height: '80%'}}>
-                                            <div className="my-2"style={{background: '#AFC38E', borderRadius: '8px'}}>
-                                                <Typography sx={{display: 'inline', fontSize: 12}}>{participant} </Typography>
-                                            </div>
-                                            <div style={{background: '#e8efe0', borderRadius: '8px', height: "100%"}}>
-                                                <Button onClick={() => handleLeave(participant, value["event_id"], value["name"])}> KICK </Button>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                    ))} */}
-                                {/* </div> */}
-                                {/* invite participants box */}
-                                {/* <div style={{width: "30%", alignItems: 'center', textAlign: "center", display: 'flex', flexDirection: 'column', background: '#e8efe0', borderRadius: '15px', marginRight: 20, marginBottom: 2}}>
-                                        <Typography>INVITE NEW USER</Typography>
-                                        <div>
-                                            <FormControl
-                                                component="form"
-                                                onSubmit={(e) => {
-                                                    e.preventDefault();
-                                                    handleInvite(e, value["event_id"], value["name"]);
-                                                }}
-                                                >
-                                                <TextField
-                                                    size="small"
-                                                    sx={{ width: '100%' }}
-                                                    onChange={(e) => setInviteUser(e.target.value)}
-                                                />
-                                                <Button type="submit">Invite</Button>
-                                            </FormControl>
-                                        </div>
-                                </div> */}
-
-
-                        {/* <Box sx={{display: 'flex', textAlign: 'center', height:'45%'}}>
-                            <Box sx={{ background: '#DAE4CC', borderRadius: '8px', width: '80%', marginRight:1}}>
-                                <HostDates hostData={hostedData[key]} status={status} setStatus={setStatus} />
-                            </Box>
-                            <Box sx={{ background: '#DAE4CC', borderRadius: '8px', width: '40%', marginLeft:1}}>
-                                <div style={{display: 'flex', flexDirection:'column', textAlign: 'center'}}>
-                                    <Typography>Status</Typography>
-                                    {voteData[value["event_id"]] ? (
-                                        <Typography>{voteData[value["event_id"]].status}</Typography>
-                                    ) : (
-                                        <Typography>Loading...</Typography>
-                                    )}
-                                    {voteData[value["event_id"]] && voteData[value["event_id"]].status === "Inactive" && (
-                                       <Button onClick={(e) => {
-                                                        e.preventDefault();
-                                                        handlePushVote(value["event_id"], value["name"]);}}>Start Voting</Button>
-                                    )}
-                                    {voteData[value["event_id"]] && voteData[value["event_id"]].status === "Active" ? (
-                                        <div>
-                                            <Typography>Voters: {voteData[value["event_id"]].total_users.length - voteData[value["event_id"]].waiting.length} / {voteData[value["event_id"]].total_users.length}</Typography>
-                                            <Button onClick={(e) => {
-                                            e.preventDefault();
-                                            handlePushVote(value["event_id"], value["name"]);
-                                            }}>Restart Voting</Button>
-                                            <Typography sx={{ fontSize: 10, color: 'red' }}>This will delete all the current Votes for this event!</Typography>
-                                            {voteData[value["event_id"]].dates.length > 0 ? (
-                                            <BarChart
-                                                sx={{ textAlign: 'center' }} */}
-                                                {/* layout='vertical'
-                                                xAxis={[{ scaleType: 'band', data: voteData[value["event_id"]].dates }]}
-                                                series={voteData[value["event_id"]].votes}
-                                                width={350}
-                                                height={200}
-                                                colors={['#AFC38E']}
-                                            />
-                                            ) : (
-                                                <div>
-                                                    <Typography>Once there are votes registered, it will be displayed here!</Typography>
-                                                </div>
-                                                )}
-                                        </div>
-                                        ) : (
-                                            <div>
-                                                    <Typography>Once there are votes registered, it will be displayed here!</Typography>
-                                                </div>
-                                        )}
-                                </div>
-                            </Box>
-                        </Box> */}
                     </div>
                 ))}
             </div>
