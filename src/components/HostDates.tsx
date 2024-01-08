@@ -3,7 +3,7 @@ import { Box, Typography, MenuItem, Checkbox, Menu, FormGroup,
     FormControlLabel, Button} from '@mui/material'
 import getDate from '../functions/getDate';
 import getTimeRange from '../functions/getTimeRange'
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import { SingleInputTimeRangeField } from '@mui/x-date-pickers-pro/SingleInputTimeRangeField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
