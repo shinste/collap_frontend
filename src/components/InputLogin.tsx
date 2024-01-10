@@ -8,9 +8,6 @@ import { Link } from 'react-router-dom';
 import { LoginContext } from '../contexts/UsernameContext';
 
 
-
-
-
 const InputLogin = () => {
 
     const {setUsername} = useContext(LoginContext)

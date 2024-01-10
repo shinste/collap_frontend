@@ -20,6 +20,7 @@ const ActionList = () => {
 
     const [eventData, setEventData] = useState<datatype[]>([]);
     const [status, setStatus] = useState('');
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [error, setError] = useState('');
     const storedUsername = localStorage.getItem('username') || '';
     const [panel, setPanel] = useState('');
@@ -35,7 +36,6 @@ const ActionList = () => {
     useEffect(() => {
         getNotifications(setEventData, setError, storedUsername, setMissed, setAction);
         setPanel('');
-        // actionEnd(eventData);
     }, [status]);
 
 
@@ -48,7 +48,7 @@ const ActionList = () => {
           notification : event["notification"]
         }
         
-        const response = await fetch('http://127.0.0.1:8000/delete_notifications/', {
+        const response = await fetch('http://0.0.0.0:10000/delete_notifications/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
