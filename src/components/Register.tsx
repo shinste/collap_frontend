@@ -1,6 +1,26 @@
-import { Container, Toolbar, Typography, TextField, Button } from '@mui/material';
-import React, { useState } from 'react';
+import { Container, Typography, TextField, Button } from '@mui/material';
+import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+
+// const getCSRFToken = (name: string | null): string | null => {
+//   let cookieValue = null
+
+//   return cookieValue
+// }
+// function getCookie(name: string) {
+//   var cookieValue = null;
+//   if (document.cookie && document.cookie !== '') {
+//       var cookies = document.cookie.split(';');
+//       for (var i = 0; i < cookies.length; i++) {
+//           var cookie = jQuery.trim(cookies[i]);
+//           if (cookie.substring(0, name.length + 1) === (name + '=')) {
+//               cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+//               break;
+//           }
+//       }
+//   }
+//   return cookieValue;
+// }
 
 
 const Register = () => {
@@ -8,6 +28,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
+    const [csrfToken, setCsrfToken] = useState(null)
   
   
     const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,58 +46,76 @@ const Register = () => {
           username: username,
           password: password,
         };
-    
-        try {
-          const response = await fetch('https://0.0.0.0:10000/register/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(userData),
-          });
-    
-          if (response.ok) {
-            const data = await response.json();
-            console.log('User created:', data);
-            setSuccess(true)
-            setError('')
-          } else {
-              const errorData = await response.json();
-              const errorMessage = errorData.username[0];
-              setError(errorMessage);
-              setSuccess(false)
-              console.error('Failed to create user:', error);
-          }
-        } catch (error) {
-          console.error('Error:', error);
-          setSuccess(false)
-          setError('Invalid Request');
-        }
+
+        // const csrfToken = getCSRFToken();
+
+      // if (!csrfToken) {
+      //   console.error('CSRF token not found.');
+      //   return;
+      // }
+
+      const headers: HeadersInit = {
+        'Content-Type': 'application/json',
+        // 'X-CSRFToken': csrfToken,
       };
+
+    
+      try {
+        console.log('cookie', csrfToken);
+        const response = await fetch('https://collap-backend.onrender.com/register/', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          // credentials: 'include',
+          body: JSON.stringify(userData),
+        });
   
+        if (response.ok) {
+          const data = await response.json();
+          console.log('User created:', data);
+          setSuccess(true)
+          setError('')
+        } else {
+            const errorData = await response.json();
+            const errorMessage = errorData.username[0];
+            setError(errorMessage);
+            setSuccess(false)
+            console.error('Failed to create user:', error);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        setSuccess(false)
+        setError('Invalid Request');
+      }
+    };
+
+    useEffect(() => {
+      fetch('https://collap-backend.onrender.com/get-csrf-token/')
+  }, []);
+
     return (
         <Container>
           <div className="vertical-center-norm">
             <div className='center' >
               <form onSubmit={handleSubmit}>
                 <h1 className='center'>Registration</h1>
-                <TextField
-                  label="Username"
-                  value={username}
-                  onChange={handleUsernameChange}
-                  fullWidth
-                  variant="outlined"
-                  margin="normal"
-                />
-                <TextField
-                  label="Password"
-                  type="password"
-                  value={password}
-                  onChange={handlePasswordChange}
-                  fullWidth
-                  variant="outlined"
-                  margin="normal"
-                />
+                <meta name="csrf-token" content="{{ csrf_token() }}"></meta>
+                  <TextField
+                    label="Username"
+                    value={username}
+                    onChange={handleUsernameChange}
+                    fullWidth
+                    variant="outlined"
+                    margin="normal"
+                  />
+                  <TextField
+                    label="Password"
+                    type="password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                    fullWidth
+                    variant="outlined"
+                    margin="normal"
+                  />
                 <div className='center-content'>
                   {error && <Typography variant="body1" sx={{ color: 'red' }}>{error}</Typography>}
                   {success && <Typography variant="body1" sx={{ color: 'green' }}>Registration for {username} successful! Click <Link to="/" className="App-link">Here</Link> to Login</Typography>}
