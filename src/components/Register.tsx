@@ -66,7 +66,7 @@ const Register = () => {
         const response = await fetch('https://collap-backend.onrender.com/register/', {
           method: 'POST',
           headers: headers,
-          credentials: 'same-origin',
+          credentials: 'include',
           body: JSON.stringify(userData),
         });
   
@@ -94,7 +94,7 @@ const Register = () => {
         headers: {
           "content-type": "application/json",
         },
-        credentials: 'same-origin'
+        credentials: 'include'
       });
       console.log('document', document.cookie)
     }, []);
