@@ -28,7 +28,7 @@ const InputLogin = () => {
       e.preventDefault();
     
       try {
-        const response = await fetch(`http://127.0.0.1:8000/login/?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
+        const response = await fetch(`https://collap-backend.onrender.com/login/?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
         if (response.ok) {
           const data = await response.json();
           navigate('/homepage', { replace: true})
