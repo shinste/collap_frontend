@@ -24,12 +24,13 @@ import { Link } from 'react-router-dom';
 
 
 const Register = () => {
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
     const [csrfToken, setCsrfToken] = useState(null)
-  
+
   
     const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setUsername(e.target.value);
@@ -56,7 +57,7 @@ const Register = () => {
 
       const headers: HeadersInit = {
         'Content-Type': 'application/json',
-        // 'X-CSRFToken': csrfToken,
+        'X-CSRFToken': 'FhBk7mYs5qbhuHHTlX4L21TL1eLqQG3s',
       };
 
     
@@ -64,8 +65,8 @@ const Register = () => {
         console.log('cookie', csrfToken);
         const response = await fetch('https://collap-backend.onrender.com/register/', {
           method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          // credentials: 'include',
+          headers: headers,
+          credentials: 'same-origin',
           body: JSON.stringify(userData),
         });
   
@@ -89,8 +90,14 @@ const Register = () => {
     };
 
     useEffect(() => {
-      fetch('https://collap-backend.onrender.com/get-csrf-token/')
-  }, []);
+      fetch('https://collap-backend.onrender.com/get-csrf-token/', {
+        headers: {
+          "content-type": "application/json",
+        },
+        credentials: 'same-origin'
+      });
+      console.log('document', document.cookie)
+    }, []);
 
     return (
         <Container>
@@ -98,7 +105,6 @@ const Register = () => {
             <div className='center' >
               <form onSubmit={handleSubmit}>
                 <h1 className='center'>Registration</h1>
-                <meta name="csrf-token" content="{{ csrf_token() }}"></meta>
                   <TextField
                     label="Username"
                     value={username}
