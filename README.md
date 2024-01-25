@@ -11,3 +11,7 @@ This is my very first real project and I decided to make an event planning appli
 Although I took a lot of time trying to document all the backend logic and endpoints, but it proved very difficult to see the BIGGER picture when planning something you've never done in your life. Looking back, it may have been more beneficial to simultaneously think about backend and frontend instead of going one at a time like I believed to be better. This way I could have identified more oversights and flaws with my design. However, this journey of struggle has taught me (in a tough way) a lot in how I must think about web development and all the meticulous planning I should do before actually creating code for a product. 
 
 Another reflection I have about not seeing the larger scope during this project is not planning and implementing more features than I had designed the application to have. My application lacks some features that I had overlooked during my planning phase, and I regret not taking more time to add more to my application. It wasn't a large issue implementing these add-ons during the development process, but it was very difficult going through many ideas during development and spending more time delaying my overall progress with the project. At one point I decided that I need to ignore most ideas unless they were vital to the logic of the application. My lack of time and desire to put this project on my resume contributed to this decision.
+
+## Documentation (Split by Pages)
+
+### Login
