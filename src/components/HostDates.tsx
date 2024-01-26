@@ -146,7 +146,7 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
     }, []);
     return (
         <div style={{display: 'flex', width: '100%', justifyContent: 'space-evenly', height: '100%', marginTop:10}}>
-            <Box sx={{display: 'flex', flexDirection: 'column', textAlign: 'center', width: '33%', height: '100%'}}>
+            <Box sx={{display: 'flex', flexDirection: 'column', textAlign: 'center', width: '40%', height: '100%'}}>
                 <Typography variant='h6' sx={{marginBottom: 1}}>
                     Primary Date
                 </Typography>
@@ -158,7 +158,7 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
                         End: {getDate(hostData.primary_end)} {getTimeRange(hostData.start, hostData.end, 'end')}
                     </Typography>
                 </div>
-                <Box sx={{ border: '2px solid #A8A8A8', borderRadius: '15px', padding:2, marginTop: 3}}>
+                <Box sx={{ border: '2px solid #A8A8A8', borderRadius: '15px', padding:1, marginTop: 3}}>
                     <Typography>Change Primary</Typography>
                     <Box>
                         <Select

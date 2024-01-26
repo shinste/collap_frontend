@@ -7,6 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import JoinPanel from './JoinPanel';
 import VotePanel from './VotePanel';
 import postApi from '../functions/postApi';
+import getApi from '../functions/getApi';
 
 
 
@@ -84,7 +85,7 @@ const ActionList = () => {
 
     const handleVote = async (selected: number, event:any) => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/event/dates/?event_id=${encodeURIComponent(event.event_id_id)}`);
+        const response = await getApi(`event/dates/?event_id=${encodeURIComponent(event.event_id_id)}`);
         if (response.ok) {
           const fetchedEventData = await response.json();
           setDates(fetchedEventData); // Update state with fetched data
@@ -122,13 +123,13 @@ const ActionList = () => {
                                   <div>
                                     {key === action && (
                                         <div style={{marginBottom: 10}}>
-                                          <Typography>actions</Typography>
+                                          <Typography>Actions</Typography>
                                           {/* {updateAction()} */}
                                         </div>
                                       )}
                                     {key === missed && (
                                         <div style={{marginBottom: 10}}>
-                                          <Typography>what you missed</Typography>
+                                          <Typography>What you missed</Typography>
                                           {/* {updateAction()} */}
                                         </div>
                                       )}

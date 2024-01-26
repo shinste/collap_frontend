@@ -26,6 +26,7 @@ const HostEventActions = () => {
     const [status, setStatus] = useState(false);
     const [inviteUser, setInviteUser] = useState('');
     const [success, setSuccess] = useState('');
+    const [deleteId, setDeleteId] = useState(0);
 
     const hostedEvents = async () => {
         try {
@@ -159,8 +160,9 @@ const HostEventActions = () => {
 
     const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
+    const handleClickOpen = (event_id: number) => {
         setOpen(true);
+        setDeleteId(event_id)
       };
     
       const handleClose = () => {
@@ -319,7 +321,7 @@ const HostEventActions = () => {
                             </div>
                             <div style={{textAlign: 'right', margin:30, marginTop: 15}}>
                                 <Tooltip title='Delete Event'>
-                                    <Button sx={{background: 'white', borderRadius: '12px'}}onClick={handleClickOpen}>
+                                    <Button sx={{background: 'white', borderRadius: '12px'}}onClick={() => {handleClickOpen(+key)}}>
                                         <Typography sx={{textTransform:'capitalize', color: 'red'}}>Delete Event</Typography>
                                     </Button>
                                 </Tooltip>
@@ -330,7 +332,7 @@ const HostEventActions = () => {
                                     aria-describedby="alert-dialog-description"
                                 >
                                     <DialogTitle id="alert-dialog-title">
-                                    {"Delete the event " + hostedData[key]["name"]}
+                                    {"Delete the event " + hostedData[deleteId].name}
                                     </DialogTitle>
                                     <DialogContent>
                                     <DialogContentText id="alert-dialog-description">
@@ -339,7 +341,7 @@ const HostEventActions = () => {
                                     </DialogContent>
                                     <DialogActions>
                                     <Button sx={{color: 'green'}} onClick={handleClose}>Cancel</Button>
-                                    <Button sx={{color: 'red'}} onClick={() => handleDelete(hostedData[key]["event_id"], hostedData[key]["name"])} autoFocus>
+                                    <Button sx={{color: 'red'}} onClick={() => handleDelete(hostedData[deleteId].event_id, hostedData[deleteId].name)} autoFocus>
                                         Delete
                                     </Button>
                                     </DialogActions>

@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import { Typography } from '@mui/material';
 import postApi from '../functions/postApi';
+import getDate from '../functions/getDate';
 
 function not<T>(a: readonly T[], b: readonly T[]): T[] {
     return a.filter((value) => b.indexOf(value) === -1);
@@ -147,7 +148,6 @@ const VotePanel = ({ key, status, dates, event_id }: JoinProps) => {
       >
         {items.map((value: number) => {
           const labelId = `transfer-list-all-item-${value}-label`;
-
           return (
             <ListItem
               key={value}
@@ -165,7 +165,7 @@ const VotePanel = ({ key, status, dates, event_id }: JoinProps) => {
                   }}
                 />
               </ListItemIcon>
-              <ListItemText id={labelId} primary={dates[value]} />
+              <ListItemText id={labelId} primary={getDate(dates[value])} />
             </ListItem>
           );
         })}
