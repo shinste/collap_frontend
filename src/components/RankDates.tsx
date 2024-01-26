@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, List } from '@mui/material'
 import getDate from '../functions/getDate';
+import getApi from '../functions/getApi';
 
 interface RankedDateProp {
     event_id: string;
@@ -12,7 +13,7 @@ const RankDates: React.FunctionComponent<RankedDateProp> = ({event_id}) => {
     const retrieve = async () => {
 
         try {
-            const response = await fetch(`http://127.0.0.1:8000/ranked/?event_id=${encodeURIComponent(event_id)}`);
+            const response = await getApi(`ranked/?event_id=${encodeURIComponent(event_id)}`);
             if (response.ok) {
             const fetchedRankData = await response.json();
             setRankedData(fetchedRankData); // Update state with fetched data

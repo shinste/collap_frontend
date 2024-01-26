@@ -1,5 +1,5 @@
 import React from 'react';
-
+import postApi from './postApi';
 
 const LeaveEvent = async (event_id: String, username: string, name: String, setError: React.Dispatch<React.SetStateAction<any>>) => {
     try {
@@ -7,14 +7,7 @@ const LeaveEvent = async (event_id: String, username: string, name: String, setE
         username: username,
         event_id: event_id
       }
-      const response = await fetch('http://127.0.0.1:8000/event/leave/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(leaveData),
-      });
-
+      const response = await postApi('event/leave/', leaveData);
       if (response.ok) {
         const data = await response.json();
         console.log('Event Left:', data);

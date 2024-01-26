@@ -5,7 +5,8 @@ import React, { useState, useEffect } from 'react';
 import LeaveEvent from '../functions/leaveEvent';
 import HostDates from './HostDates';
 import RankDates from './RankDates';
-
+import getApi from '../functions/getApi';
+import postApi from '../functions/postApi';
 
 
 const HostEventActions = () => {
@@ -28,7 +29,8 @@ const HostEventActions = () => {
 
     const hostedEvents = async () => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/event/hosted/?username=${encodeURIComponent(storedUsername)}`);
+            
+            const response = await getApi(`event/hosted/?username=${encodeURIComponent(storedUsername)}`);
             if (response.ok) {
               const fetchedEventData = await response.json();
               setHostedData(fetchedEventData); // Update state with fetched data
@@ -52,14 +54,7 @@ const HostEventActions = () => {
             name: name
         }
         try {
-            const response = await fetch('http://127.0.0.1:8000/event/invite/', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(inviteData),
-            });
-      
+            const response = await postApi('event/invite/', inviteData);
             if (response.ok) {
               const data = await response.json();
               console.log('User Invited:', data);
@@ -111,7 +106,7 @@ const HostEventActions = () => {
     const [deleteName, setDeleteName] = useState('');
     const voteInfo = async () => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/event/get_votes/?username=${encodeURIComponent(storedUsername)}`);
+            const response = await getApi(`event/get_votes/?username=${encodeURIComponent(storedUsername)}`);
             if (response.ok) {
               const fetchedVoteData = await response.json();
               setVoteData(fetchedVoteData); // Update state with fetched data
@@ -131,13 +126,7 @@ const HostEventActions = () => {
             const pushData = {
                 event_id : event_id
             }
-            const response = await fetch('http://127.0.0.1:8000/event/push_votes/', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(pushData),
-            });
+            const response = await postApi('event/push_votes/', pushData);
           if (response.ok) {
             const data = await response.json();
             console.log('Pushed Vote:', data);
@@ -184,13 +173,7 @@ const HostEventActions = () => {
                 username: storedUsername,
                 event_id : event_id
             }
-            const response = await fetch('http://127.0.0.1:8000/event/delete/', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(pushData),
-            });
+            const response = await postApi('event/delete/', pushData);
           if (response.ok) {
             const data = await response.json();
             console.log('Pushed Vote:', data);

@@ -1,8 +1,9 @@
 import React from 'react';
+import getApi from './getApi';
 
 const getEvents = async (setEventData: React.Dispatch<React.SetStateAction<any>>, storedUsername: string) => {
   try {
-    const response = await fetch(`http://127.0.0.1:8000/event/view/?username=${encodeURIComponent(storedUsername)}`);
+    const response = await getApi(`event/view/?username=${encodeURIComponent(storedUsername)}`);
     if (response.ok) {
       const fetchedEventData = await response.json();
       setEventData(fetchedEventData); // Update state with fetched data

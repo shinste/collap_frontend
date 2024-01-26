@@ -6,6 +6,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import JoinPanel from './JoinPanel';
 import VotePanel from './VotePanel';
+import postApi from '../functions/postApi';
 
 
 
@@ -48,13 +49,7 @@ const ActionList = () => {
           notification : event["notification"]
         }
         
-        const response = await fetch('http://0.0.0.0:10000/delete_notifications/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(dismissData),
-        });
+        const response = await postApi('delete_notifications/', dismissData);
         if (response.ok) {
           const data = await response.json();
           

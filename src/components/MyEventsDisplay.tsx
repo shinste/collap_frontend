@@ -10,6 +10,7 @@ import CustomCalendar from './CustomCalendar';
 import getEvents from '../functions/getEvents';
 import formatTimeRange from '../functions/getTimeRange';
 import getDate from '../functions/getDate';
+import postApi from '../functions/postApi';
 
 const MyEventsDisplay = () => {
   type EventData = {
@@ -53,14 +54,7 @@ const MyEventsDisplay = () => {
         username: storedUsername,
         event_id: event_id
       }
-      const response = await fetch('http://127.0.0.1:8000/event/leave/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(deleteData),
-      });
-
+      const response = await postApi('event/leave/', deleteData);
       if (response.ok) {
         const data = await response.json();
         console.log('Event Left:', data);

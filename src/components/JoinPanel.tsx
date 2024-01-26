@@ -4,7 +4,7 @@ import DynamicInput from './DynamicInput';
 import getEventInfo from '../functions/getEventInfo';
 import formatTimeRange from '../functions/getTimeRange';
 import getDate from '../functions/getDate';
-
+import postApi from '../functions/postApi';
 
 interface JoinProps {
     key: number;
@@ -46,14 +46,7 @@ const JoinPanel = ({ key, eventInfo, status }: JoinProps) => {
         e.preventDefault();
         
         try {
-            const response = await fetch('http://127.0.0.1:8000/event/join/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(eventData),
-            });
-    
+            const response = await postApi('event/join/', eventData);
             if (response.ok) {
             const data = await response.json();
             console.log('Event Joined:', data);

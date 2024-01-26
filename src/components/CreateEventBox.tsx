@@ -7,6 +7,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { MultiInputDateTimeRangeField } from '@mui/x-date-pickers-pro/MultiInputDateTimeRangeField';
 import { styled } from '@mui/system';
 import DynamicInput from './DynamicInput';
+import postApi from "../functions/postApi";
 
 const StyledMultiInputDateTimeRangeField = styled(MultiInputDateTimeRangeField)`
   .MuiInputBase-input {
@@ -62,14 +63,7 @@ const TagInput = () => {
           date: availability
     }
     try {
-        const response = await fetch('http://127.0.0.1:8000/event/create/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(eventData),
-        });
-  
+      const response = await postApi(`event/create/`, eventData);
         if (response.ok) {
           const data = await response.json();
           console.log('User created:', data);

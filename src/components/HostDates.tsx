@@ -9,6 +9,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import postApi from '../functions/postApi';
 
 
   
@@ -56,14 +57,7 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
         console.log('changing',changeData);
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/event/change_primary/', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(changeData),
-            });
-      
+            const response = await postApi('event/change_primary/', changeData);
             if (response.ok) {
               const data = await response.json();
               console.log('Primary Date Changed', data);
@@ -119,14 +113,7 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
           }
         console.log('button',addDate);
         try {
-            const response = await fetch('http://127.0.0.1:8000/event/edit_date/', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(dateData),
-            });
-      
+            const response = await postApi('event/edit_date/', dateData);
             if (response.ok) {
               const data = await response.json();
               console.log('Edit Made:', data);
@@ -163,7 +150,7 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
                 <Typography variant='h6' sx={{marginBottom: 1}}>
                     Primary Date
                 </Typography>
-                <div className='vertical-flex '>
+                <div className='vertical-flex' style={{height: '80%'}}>
                     <Typography sx={{fontSize: 12}}>
                         Start: {getDate(hostData.primary_date)} {getTimeRange(hostData.start, hostData.end, 'start')} 
                     </Typography>
@@ -171,50 +158,51 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
                         End: {getDate(hostData.primary_end)} {getTimeRange(hostData.start, hostData.end, 'end')}
                     </Typography>
                 </div>
-                <Typography className='mt-5'>Change Primary</Typography>
-                <Box>
-                    <Select
-                    sx={{borderRadius: '8px', width: '100%', height: '45px'}}
-                    className='mt-1'
-                    size='small'
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={primaryDate}
-                    
-                    onChange={(event) => setPrimaryDate(event.target.value)}
-                    >
-                    {Object.entries(hostData.dates).map(([key, value]) => (
-                        <MenuItem value={String(value)}>{getDate(String(value))}</MenuItem>
-                    ))}
-                    </Select>
-                </Box>
-                <div className='mt-3'>
-                    <Typography>Optional Change</Typography>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DemoContainer
-                            sx={{height:'100%'}}
-                            components={['SingleInputTimeRangeField', 'DatePicker']}
-                        >
-                            <Box >
-                                <DatePicker
-                                    label="End Date"
-                                    sx={{"& input": {
-                                        height: '30px ', // Adjust the height as needed
-                                        padding: 1
-
-                                      }}}
-                                    // Use your date value here
-                                    onChange={(value) => setPrimaryEnd(value)} // Handle date change
-                                />
-                            </Box>
+                <Box sx={{ border: '2px solid #A8A8A8', borderRadius: '15px', padding:2, marginTop: 3}}>
+                    <Typography>Change Primary</Typography>
+                    <Box>
+                        <Select
+                        sx={{borderRadius: '8px', width: '100%', height: '45px'}}
+                        className='mt-1'
+                        size='small'
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={primaryDate}
                         
-                            <Box sx={{width: '100%'}}>
-                                <SingleInputTimeRangeField sx={{height: '40px'}} onChange={(value) => {handleTime(value)}} size="small" label="From - To" />
-                            </Box>
-                        </DemoContainer>
-                    </LocalizationProvider>
-                </div>
-                <Button onClick={handleChange}>Confirm Changes</Button>
+                        onChange={(event) => setPrimaryDate(event.target.value)}
+                        >
+                        {Object.entries(hostData.dates).map(([key, value]) => (
+                            <MenuItem value={String(value)}>{getDate(String(value))}</MenuItem>
+                        ))}
+                        </Select>
+                    </Box>
+                    <div className='mt-3'>
+                        <Typography>Optional Change</Typography>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DemoContainer
+                                sx={{height:'100%'}}
+                                components={['SingleInputTimeRangeField', 'DatePicker']}
+                            >
+                                <Box >
+                                    <DatePicker
+                                        label="End Date"
+                                        sx={{"& input": {
+                                            height: '30px ', // Adjust the height as needed
+                                            padding: 1
+
+                                        }}}
+                                        // Use your date value here
+                                        onChange={(value) => setPrimaryEnd(value)} // Handle date change
+                                    />
+                                </Box>
+                                <Box sx={{width: '100%'}}>
+                                    <SingleInputTimeRangeField sx={{height: '40px'}} onChange={(value) => {handleTime(value)}} size="small" label="From - To" />
+                                </Box>
+                            </DemoContainer>
+                        </LocalizationProvider>
+                    </div>
+                    <Button onClick={handleChange}>Confirm Changes</Button>
+                </Box>
             </Box>
             <Box sx={{width: '35%'}}>
                 <Typography variant='h6' sx={{marginBottom: 1}}>

@@ -1,9 +1,10 @@
 import React from 'react';
+import getApi from './getApi';
 
 const getNotifications = async (setEventData: React.Dispatch<React.SetStateAction<any>>, setErrorMessage: React.Dispatch<React.SetStateAction<string>>, storedUsername: string, missed?: React.Dispatch<React.SetStateAction<string>>, action?: React.Dispatch<React.SetStateAction<string>>) => {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/notification/?username=${encodeURIComponent(storedUsername)}`);
-        if (response.ok) {
+        const response = await getApi(`notification/?username=${encodeURIComponent(storedUsername)}`);
+        if (response.ok) { 
             const eventData = await response.json();
             setEventData(eventData); // Update state with fetched data
             if (missed) {

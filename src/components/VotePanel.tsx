@@ -11,6 +11,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import { Typography } from '@mui/material';
+import postApi from '../functions/postApi';
 
 function not<T>(a: readonly T[], b: readonly T[]): T[] {
     return a.filter((value) => b.indexOf(value) === -1);
@@ -86,14 +87,7 @@ const VotePanel = ({ key, status, dates, event_id }: JoinProps) => {
     console.log('Selected Dates:', selectedDates); // For demonstration, logs the selected dates
     // Perform any further actions with the selected dates here
     try {
-      const response = await fetch('http://127.0.0.1:8000/vote/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(voteData),
-      });
-
+      const response = await postApi('vote/', voteData);
       if (response.ok) {
         const data = await response.json();
         console.log('Vote Recorded:', data);
