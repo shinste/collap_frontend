@@ -35,7 +35,7 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
 
     const handleTime = (value: any) => {
 
-        if (value[0]) {
+        if (value[0].$d) {
             setStartTime(String(value[0].$d).split(' ')[4])
         }
         if (value[1]) {
@@ -51,16 +51,22 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
             primary: primaryDate,
             primary_end: primaryEnd.$y + '-' + String(primaryEnd.$M + 1) + '-' + primaryEnd.$D
         }
-        if (changeData.primary_end.includes('undefined')) {
+        if (!startTime) {
+            changeData.start = hostData.start
+        }
+        if (!endTime) {
+            changeData.end = hostData.end
+        }
+        if (!primaryEnd.$y || !primaryEnd.$M || !primaryEnd.$D) {
             changeData.primary_end = hostData.primary_end
         }
-        console.log('changing',changeData);
 
         try {
             const response = await postApi('event/change_primary/', changeData);
             if (response.ok) {
               const data = await response.json();
               console.log('Primary Date Changed', data);
+              console.log(changeData);
               setStatus(!status);
               setError('');
             } else {
@@ -192,7 +198,7 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
 
                                         }}}
                                         // Use your date value here
-                                        onChange={(value) => setPrimaryEnd(value)} // Handle date change
+                                        onChange={setPrimaryEnd} // Handle date change
                                     />
                                 </Box>
                                 <Box sx={{width: '100%'}}>
