@@ -330,7 +330,7 @@ const HostEventActions = () => {
                                     aria-describedby="alert-dialog-description"
                                 >
                                     <DialogTitle id="alert-dialog-title">
-                                    {"Delete the event " + value["name"]}
+                                    {"Delete the event " + hostedData[key]["name"]}
                                     </DialogTitle>
                                     <DialogContent>
                                     <DialogContentText id="alert-dialog-description">
@@ -339,7 +339,7 @@ const HostEventActions = () => {
                                     </DialogContent>
                                     <DialogActions>
                                     <Button sx={{color: 'green'}} onClick={handleClose}>Cancel</Button>
-                                    <Button sx={{color: 'red'}} onClick={() => handleDelete(value["event_id"], value["name"])} autoFocus>
+                                    <Button sx={{color: 'red'}} onClick={() => handleDelete(hostedData[key]["event_id"], hostedData[key]["name"])} autoFocus>
                                         Delete
                                     </Button>
                                     </DialogActions>
@@ -351,10 +351,10 @@ const HostEventActions = () => {
                 ))}
             </div>
             <div style={{position: 'fixed'}}>
-                    {success === 'invited' && <Typography sx={{color: 'green'}}> Successfully Invited {inviteUser}</Typography>}
-                    {success === 'deleted' && <Typography sx={{color: 'green'}}> Successfully Deleted {deleteName}</Typography>}
-                    {error && <Typography sx={{color:'red'}}>{error}</Typography>}
-                </div>
+                {success === 'invited' && <Typography sx={{color: 'green'}}> Successfully Invited {inviteUser}</Typography>}
+                {success === 'deleted' && <Typography sx={{color: 'green'}}> Successfully Deleted {deleteName}</Typography>}
+                {error && <Typography sx={{color:'red'}}>{error}</Typography>}
+            </div>
         </div>
 
     );
