@@ -50,7 +50,7 @@ const HostEventActions = () => {
     const handleInvite = async (e: React.FormEvent<HTMLFormElement>, event_id: string, name: string) => {
         e.preventDefault();
         const inviteData = {
-            username: inviteUser,
+            username: inviteUser.toLowerCase(),
             event_id: event_id,
             name: name
         }
