@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Box, Typography, MenuItem, Checkbox, Menu, FormGroup,
-    FormControlLabel, Button} from '@mui/material'
+    FormControlLabel, Button, InputLabel} from '@mui/material'
 import getDate from '../functions/getDate';
 import getTimeRange from '../functions/getTimeRange'
 import Select from '@mui/material/Select';
@@ -194,15 +194,20 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
                                         label="End Date"
                                         sx={{"& input": {
                                             height: '30px ', // Adjust the height as needed
-                                            padding: 1
-
-                                        }}}
-                                        // Use your date value here
+                                            paddingTop: 1
+                                          }}}
                                         onChange={setPrimaryEnd} // Handle date change
                                     />
                                 </Box>
                                 <Box sx={{width: '100%'}}>
-                                    <SingleInputTimeRangeField sx={{height: '40px'}} onChange={(value) => {handleTime(value)}} size="small" label="From - To" />
+                                    <SingleInputTimeRangeField 
+                                        sx={{
+                                            height: '50px',
+                                            "& input": {height: '30px ', paddingTop: 1}
+                                        }}
+                                        onChange={(value) => {handleTime(value)}}
+                                        size="small"
+                                        label="From - To" />
                                 </Box>
                             </DemoContainer>
                         </LocalizationProvider>
@@ -245,8 +250,7 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
                             label="New Date"
                             sx={{"& input": {
                                 height: '30px ', // Adjust the height as needed
-                                padding: 1
-
+                                paddingTop: 1
                               }}}
                             onChange={(value) => handleDate(value)} // Handle date change
                         />
