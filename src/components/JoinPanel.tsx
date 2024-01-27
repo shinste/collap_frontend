@@ -98,7 +98,7 @@ const JoinPanel = ({ key, eventInfo, status }: JoinProps) => {
                     <h3>Availability</h3>
                 </div>
                 <div>
-                    <Typography className="mb-1" variant='subtitle2'>To join this event you must provide available days where you can attend at the time provided above </Typography>
+                    <Typography className="mb-1" variant='subtitle2'>To join this event you must provide available days where you can attend at the TIME provided above (Press Enter)</Typography>
                 </div>
                 <div>
                     <DynamicInput data={dates} setData={setDates} inputType="YYYY-MM-DD" />

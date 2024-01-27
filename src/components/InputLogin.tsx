@@ -30,7 +30,7 @@ const InputLogin = () => {
       // http://127.0.0.1:8000
       // https://collapbackend.azurewebsites.net
       try {
-        const response = await getApi(`login/?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`)
+        const response = await getApi(`login/?username=${encodeURIComponent(username.toLowerCase())}&password=${encodeURIComponent(password)}`)
         if (response.ok) {
           const data = await response.json();
           navigate('/homepage', { replace: true})

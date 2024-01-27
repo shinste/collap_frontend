@@ -24,12 +24,11 @@ const Register = () => {
       e.preventDefault();
   
       const userData = {
-          username: username,
+          username: username.toLowerCase(),
           password: password,
         };
     
       try {
-        console.log('cookie', csrfToken);
         const response = await postApi(`register/`, userData)
         if (response.ok) {
           const data = await response.json();
