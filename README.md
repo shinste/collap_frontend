@@ -15,3 +15,5 @@ Another reflection I have about not seeing the larger scope during this project 
 ## Documentation (Split by Pages)
 
 ### Login
+
+![Login Page](collap_frontend\documentation_pics\login.png)

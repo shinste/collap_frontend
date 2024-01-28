@@ -27,9 +27,9 @@ function not<T>(a: readonly T[], b: readonly T[]): T[] {
   }
 
 interface JoinProps {
-  key: number; // Force it to rerender
+  key: number;
   status: React.Dispatch<React.SetStateAction<string>>;
-  dates: string[]; // Array of string variables representing unique dates
+  dates: string[]; 
   event_id: string
 }
 
@@ -84,9 +84,7 @@ const VotePanel = ({ key, status, dates, event_id }: JoinProps) => {
       event_id: event_id,
       dates: selectedDates
     }
-    // 'selectedDates' now contains the strings selected on the right side
-    console.log('Selected Dates:', selectedDates); // For demonstration, logs the selected dates
-    // Perform any further actions with the selected dates here
+    console.log('Selected Dates:', selectedDates);
     try {
       const response = await postApi('vote/', voteData);
       if (response.ok) {

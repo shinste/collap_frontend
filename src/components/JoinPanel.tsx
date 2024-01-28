@@ -44,7 +44,8 @@ const JoinPanel = ({ key, eventInfo, status }: JoinProps) => {
 
     const handleJoin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        
+        setError('');
+        status('');
         try {
             const response = await postApi('event/join/', eventData);
             if (response.ok) {
@@ -63,7 +64,6 @@ const JoinPanel = ({ key, eventInfo, status }: JoinProps) => {
                 }
                 
                 console.error('Failed to join event:', message);
-                console.log(eventData)
             }
         } catch (errors) {
             console.error('Error:', errors);
@@ -84,7 +84,7 @@ const JoinPanel = ({ key, eventInfo, status }: JoinProps) => {
             <div className='mt-5'>
                 <h3>Event Information [{String(previewData["name"])}]</h3>
                 <Typography variant='h6'>
-                    Current Primary Date: {getDate(String(previewData["primary_date"]))}
+                    Current Primary Date: {getDate(String(previewData["primary_date"]))} - {getDate(String(previewData["primary_end"]))}
                 </Typography>
                 <Typography variant='h6'>
                     Current Primary Time: {formatTimeRange(String(previewData["start"]), String(previewData["end"]))}
