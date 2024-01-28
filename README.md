@@ -32,4 +32,4 @@ https://github.com/shinste/collap_backend
 
 ### Login
 
-![Login Page](collap_frontend\documentation_pics\login.png)
+![documentation_pics](collap_frontend\documentation_pics\login.png)
