@@ -33,3 +33,37 @@ https://github.com/shinste/collap_backend
 ### Login
 
 ![documentation_pics](./documentation_pics/login.png)
+
+A simple login page that gives a sneak peak of the calendar feature. Will give an error message on the screen for an invalid password/username.
+
+### Registration
+
+![documentation_pics](./documentation_pics/registration.png)
+
+A simple registration page that will allow you to sign up for an account. Usernames are unique so think of a clever one. It will provide a link to the login page after a successful sign in.
+
+### Home Page
+
+![documentation_pics](./documentation_pics/homepage.png)
+
+The first page with a navigation bar, this is where you will be directed once there is a successful login. Notifications will show on the left hand, and will be marked by "Mandatory" text if its from an event that wants a vote. Although you cannot interact with the notifications on this page, there is a navigation link provided below the list. 
+
+There is also a simple calendar feature that will display a event's primary date and time. You may look through all the months and see the various plans you've made.
+
+### My Events
+
+![documentation_pics](./documentation_pics/myevent.png)
+
+This page simply shows specific information about the events you are in participating in, you may click the drop down button to view the participants of that event. On the right you will be provided a list of events that are occuring that week.
+
+### Notifications
+
+![documentation_pics](./documentation_pics/notifications.png)
+
+### Hosted Events
+
+![documentation_pics](./documentation_pics/hostedevent.png)
+
+### Create Event
+
+![documentation_pics](./documentation_pics/createevent.png)

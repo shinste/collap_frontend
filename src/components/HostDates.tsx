@@ -145,11 +145,6 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
           }
     }
 
-    // For Availability Breakdown
-
-    useEffect(() => {
-        // handleRank();
-    }, []);
     return (
         <div style={{display: 'flex', width: '100%', justifyContent: 'space-evenly', height: '100%', marginTop:10}}>
             <Box sx={{display: 'flex', flexDirection: 'column', textAlign: 'center', width: '40%', height: '100%'}}>
@@ -194,16 +189,15 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
                                         label="End Date"
                                         sx={{"& input": {
                                             height: '30px ', // Adjust the height as needed
-                                            paddingTop: 1
                                           }}}
-                                        onChange={setPrimaryEnd} // Handle date change
+                                        onChange={(value) => {setPrimaryEnd(value)}} // Handle date change
                                     />
                                 </Box>
                                 <Box sx={{width: '100%'}}>
                                     <SingleInputTimeRangeField 
                                         sx={{
                                             height: '50px',
-                                            "& input": {height: '30px ', paddingTop: 1}
+                                            "& input": {height: '30px '}
                                         }}
                                         onChange={(value) => {handleTime(value)}}
                                         size="small"
