@@ -57,7 +57,7 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
         if (!endTime) {
             changeData.end = hostData.end
         }
-        if (!primaryEnd.$y || !primaryEnd.$M || !primaryEnd.$D) {
+        if (isNaN(primaryEnd.$y) || isNaN(primaryEnd.$M) || isNaN(primaryEnd.$D)) {
             changeData.primary_end = hostData.primary_end
         }
 
@@ -188,17 +188,18 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
                                     <DatePicker
                                         label="End Date"
                                         sx={{"& input": {
-                                            height: '30px ', // Adjust the height as needed
+                                            height: '20px ', // Adjust the height as needed
+                                            padding: 2
                                           }}}
                                         onChange={(value) => {setPrimaryEnd(value)}} // Handle date change
                                     />
                                 </Box>
                                 <Box sx={{width: '100%'}}>
                                     <SingleInputTimeRangeField 
-                                        sx={{
-                                            height: '50px',
-                                            "& input": {height: '30px '}
-                                        }}
+                                        sx={{"& input": {
+                                            height: '15px ', // Adjust the height as needed
+                                            padding: 2
+                                          }}}
                                         onChange={(value) => {handleTime(value)}}
                                         size="small"
                                         label="From - To" />
@@ -243,8 +244,8 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
                         <DatePicker
                             label="New Date"
                             sx={{"& input": {
-                                height: '30px ', // Adjust the height as needed
-                                paddingTop: 1
+                                height: '20px ', // Adjust the height as needed
+                                padding: 2
                               }}}
                             onChange={(value) => handleDate(value)} // Handle date change
                         />
