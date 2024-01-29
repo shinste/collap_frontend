@@ -54,16 +54,44 @@ There is also a simple calendar feature that will display a event's primary date
 
 ![documentation_pics](./documentation_pics/myevent.png)
 
-This page simply shows specific information about the events you are in participating in, you may click the drop down button to view the participants of that event. On the right you will be provided a list of events that are occuring that week.
+This page simply shows specific information about the events you are in participating in, you may click the drop down button to view the participants of that event. On the right you will be provided a list of events that are occuring that week. You may also leave an event using the red button on each event.
 
 ### Notifications
 
 ![documentation_pics](./documentation_pics/notifications.png)
 
+In the Notifications page, the notifications are separated into actions and simple information notifications. As you can see there is no dismiss button on the vote button, which forces the participant to provide dates to remove it. Theres also an invite notification that will be classified as an action, where you will be prompted to insert multiple days you are available. Simple information notifications will include being removed from an event, a new user joining an event you are in, etc.
+
 ### Hosted Events
 
 ![documentation_pics](./documentation_pics/hostedevent.png)
 
+The Hosted Event page is where hosts may access information and handle moving parts of an event. There are a lot of features to be useful to the host.
+
+#### Date Manipulation
+
+The current primary date and time for the event is already displayed, but there is a box that will allow you to change that information. The main part is the dropdown list with all the available dates for the event. The next thing is the date field where you can change the event end date, and the third is a time field where you can adjust the exact time if needed. Not all the fields need to be filled out to update the primary details.
+
+The available dates list is all the dates that were suggested through each participant when joining. The host can choose to delete any of the events as long as its the current primary date (in that case it will be grayed out and won't be selectable). There is also a manual date inserter that the host can use at his/her discretion.
+
+#### Voting
+
+The voting feature for this application will handle only dates due to simplicity sake. Including time and event duration is a little overwhelming and falls beyond the scope of this project's purpose. By default each event does not require votes, but a host can decide to push the objective to vote with a button. Once votes are sent in, we get a counter to see how many of the participants vote, and a barchart displaying them.
+
+Below the barchart is a section that recommends dates based on the available days each participant is required to give. Days where every user can attend the event are followed by green text, and dates where some users cannot make will have red text with a list of who is unable to attend. The decision to add this section, which may seem identical to the voting dates feature, is influence by a very important distinction between availability and preference. A date that is most voted on might not be the ideal choice when half of the participants are UNABLE to attend. Obviously if these two conditions, availability and preference, are the same, this addition may not be as useful.
+
+
+#### Participants
+
+This section displays users and an option to kick them from the event. There is also a textfield at the bottom which will send an invite to the specified user.
+
+#### Delete Button
+
+Upon pressing the "Delete Event" button, there will be a confirmation form that pops up where you can confirm your choice to delete the event.  
+
 ### Create Event
 
 ![documentation_pics](./documentation_pics/createevent.png)
+
+The information that is needed to create an event is prompted here. Event Name, Primary Date and Time, Participants, and your own availability. Once completing the form correctly, it will direct you to the homepage, and the event information will shown in appropriate pages (My Events and Hosted Events)
+
