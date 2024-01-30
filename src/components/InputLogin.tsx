@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { LoginContext } from '../contexts/UsernameContext';
-import getApi from '../functions/getApi';
+import postApi from '../functions/postApi';
 
 
 const InputLogin = () => {
@@ -27,10 +27,12 @@ const InputLogin = () => {
     
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      // http://127.0.0.1:8000
-      // https://collapbackend.azurewebsites.net
+      const loginInfo = {
+        username: username,
+        password: password
+      }
       try {
-        const response = await getApi(`login/?username=${encodeURIComponent(username.toLowerCase())}&password=${encodeURIComponent(password)}`)
+        const response = await postApi('login/', loginInfo)
         if (response.ok) {
           const data = await response.json();
           navigate('/homepage', { replace: true})
