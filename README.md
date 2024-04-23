@@ -22,8 +22,8 @@ Feel free to register your own account to check it out, but since it's difficult
 * username: githubexample3 password: githubexample3
 
 ### Hosted Project
-#### Note
-Free trial on Azure has terminated on 2/21/2024. Will look for new platform to host backend on 2/23/2024.
+#### Note:
+For cost purposes, the EC2 instance that hosts this app will be scheduled to run between 9AM - 5PM (Pacific), Mon - Fri.
 
 https://master--illustrious-unicorn-98eadd.netlify.app/
 ### Front End Documentation (This Repository)
