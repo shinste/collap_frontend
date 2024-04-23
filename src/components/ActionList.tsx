@@ -18,8 +18,6 @@ const ActionList = () => {
     username_id: string;
     notification: string;
   }
-
-
     const [eventData, setEventData] = useState<datatype[]>([]);
     const [status, setStatus] = useState('');
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -36,7 +34,7 @@ const ActionList = () => {
 
 
     useEffect(() => {
-        getNotifications(setEventData, setError, storedUsername, setMissed, setAction);
+        getNotifications(setEventData, storedUsername, setError, setMissed, setAction);
         setPanel('');
     }, [status]);
 
@@ -124,13 +122,11 @@ const ActionList = () => {
                                     {key === action && (
                                         <div style={{marginBottom: 10}}>
                                           <Typography>Actions</Typography>
-                                          {/* {updateAction()} */}
                                         </div>
                                       )}
                                     {key === missed && (
                                         <div style={{marginBottom: 10}}>
                                           <Typography>What you missed</Typography>
-                                          {/* {updateAction()} */}
                                         </div>
                                       )}
                                     <Box sx={{ border: '2px solid #A8A8A8', borderRadius: '15px', width: '25rem', background:'#FFFFFF' }}>
@@ -164,7 +160,6 @@ const ActionList = () => {
                             })}
                       </div>
                     ))}
-                    {/* <Typography>what you missed</Typography> */}
                 </List>
               </Box>
             </Box>  

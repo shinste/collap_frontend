@@ -34,16 +34,15 @@ const CustomCalendar: FC<CustomCalendarProps> = ({ initialView, height}) => {
     <div>
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, listPlugin]}
-        initialView={initialView} // Set the initial view dynamically
+        initialView={initialView}
         headerToolbar={{
           left: 'prev,next today',
           center: 'title',
           right: initialView
         }}
         selectable={true}
-        // select={handleDateSelect}
         height={height}
-        events={allEvents} // Use the events prop directly
+        events={allEvents}
       />
     </div>
   );

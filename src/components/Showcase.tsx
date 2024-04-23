@@ -6,7 +6,6 @@ import '../App.css'
 
 const Showcase = () => {
     return (
-      // <ThemeProvider theme={theme}>
       <body className='dark-green'>
         <Box className="container-fluid container-height">
             <Box className='mb-0 mt-5 ms-3 px-5'>
@@ -18,7 +17,6 @@ const Showcase = () => {
             </Box>
         </Box>
       </body>
-      // </ThemeProvider>
     );
   };
 

@@ -10,12 +10,13 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import postApi from '../functions/postApi';
-
+import dayjs from 'dayjs';
+import { start } from 'repl';
 
   
 
 interface HostDatesProps {
-    hostData: any; // Adjust the type of hostData if possible
+    hostData: any;
     status: boolean;
     setStatus: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -29,8 +30,6 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
     const [addDate, setAddDate] = useState('');
     const [startTime, setStartTime] = useState(hostData.start);    
     const [endTime, setEndTime] = useState(hostData.end);
-
-
     // For Primary Change
 
     const handleTime = (value: any) => {
@@ -42,6 +41,14 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
             setEndTime(String(value[1].$d).split(' ')[4])
         }
     }
+
+    const shouldDisableDate = (date: Date | null | dayjs.Dayjs) => {
+        const dateString = dayjs(date).format('YYYY-MM-DD');
+        if (dateString !== hostData.primary_date && !hostData.dates.includes(dateString)) {
+            return true;
+        }
+        return false
+    };
 
     const handleChange = async () => {
         const changeData = {
@@ -134,51 +141,145 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
                 } else{
                     setError(message)
                 }
-                
-                // setError(message)
-                console.error('Failed to create event:', message);
+                console.error('Failed to update:', message);
             }
           } catch (errors) {
             console.error('Error:', errors);
-            // setSuccess(false)
             setError('Invalid Request');
           }
     }
 
     return (
-        <div style={{display: 'flex', width: '100%', justifyContent: 'space-evenly', height: '100%', marginTop:10}}>
-            <Box sx={{display: 'flex', flexDirection: 'column', textAlign: 'center', width: '40%', height: '100%'}}>
-                <Typography variant='h6' sx={{marginBottom: 1}}>
-                    Primary Date
-                </Typography>
-                <div className='vertical-flex' style={{height: '80%'}}>
-                    <Typography sx={{fontSize: 12}}>
-                        Start: {getDate(hostData.primary_date)} {getTimeRange(hostData.start, hostData.end, 'start')} 
+        <div className="vertical-flex m-3">
+            <Typography variant='h5' sx={{marginBottom: 1, textAlign: 'left'}}>
+                Primary Date
+            </Typography>
+                    <Typography style={{fontWeight: 'bold'}}>
+                        {getDate(hostData.primary_date)} {getTimeRange(hostData.start, hostData.end, 'start')} - {getDate(hostData.primary_end)} {getTimeRange(hostData.start, hostData.end, 'end')}
                     </Typography>
-                    <Typography sx={{fontSize: 12}}>
-                        End: {getDate(hostData.primary_end)} {getTimeRange(hostData.start, hostData.end, 'end')}
-                    </Typography>
-                </div>
-                <Box sx={{ border: '2px solid #A8A8A8', borderRadius: '15px', padding:1, marginTop: 3}}>
-                    <Typography>Change Primary</Typography>
+            <div className='flex-container' style={{justifyContent: 'space-evenly'}}>
+                <div className='vertical-flex'>
+                <Typography variant='h6'>Start</Typography>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DemoContainer
+                            sx={{height:'100%'}}
+                            components={['SingleInputTimeRangeField', 'DatePicker']}
+                        >
+                            <Box >
+                                <DatePicker
+                                    label="Start Date"
+                                    sx={{"& input": {
+                                        height: '20px ',
+                                        padding: 2
+                                        },
+                                        width: '13rem'}}
+                                    
+                                    value={dayjs(hostData.primary_date)}
+                                    onChange={(value) => {
+                                                          if (shouldDisableDate(value)) {
+                                                            setError('Please only select dates that are chosen for this event. Update chosen dates below');
+                                                          } else {
+                                                            setError('');
+                                                            setPrimaryDate(value);
+                                                          }
+                                    }}
+                                    shouldDisableDate={shouldDisableDate}
+                                />
+                                {}
+                            </Box>
+                        </DemoContainer>
+                        {error && <Typography color={'red'} style={{width: '15rem', fontSize:'10px'}}>{error}</Typography>}
+                    </LocalizationProvider>
+                    {/* <Typography>Start</Typography>
                     <Box>
                         <Select
-                        sx={{borderRadius: '8px', width: '100%', height: '45px'}}
-                        className='mt-1'
-                        size='small'
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={primaryDate}
-                        
-                        onChange={(event) => setPrimaryDate(event.target.value)}
+                            sx={{borderRadius: '8px', width: '100%', height: '45px'}}
+                            className='mt-1'
+                            size='small'
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={primaryDate}
+                            onChange={(event) => setPrimaryDate(event.target.value)}
                         >
-                        {Object.entries(hostData.dates).map(([key, value]) => (
-                            <MenuItem value={String(value)}>{getDate(String(value))}</MenuItem>
-                        ))}
+                            {Object.entries(hostData.dates).map(([key, value]) => (
+                                <MenuItem value={String(value)}>{<Typography style={{fontWeight: value === hostData.primary_date ? 'bold' : 'normal'}}>{getDate(String(value))}</Typography>}</MenuItem>
+                            ))}
                         </Select>
-                    </Box>
-                    <div className='mt-3'>
-                        <Typography>Optional Change</Typography>
+                    </Box> */}
+                </div>
+                <div className='vertical-flex'>
+                    <Typography variant='h6'>End</Typography>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DemoContainer
+                                sx={{height:'100%'}}
+                                components={['SingleInputTimeRangeField', 'DatePicker']}
+                            >
+                                <Box >
+                                    <DatePicker
+                                        label="End Date"
+                                        sx={{"& input": {
+                                            height: '20px ',
+                                            padding: 2
+                                          },
+                                          width: '13rem'}}
+                                        value={dayjs(hostData.primary_end)}
+                                        onChange={(value) => {setPrimaryEnd(value)}}
+                                    />
+                                </Box>
+                            </DemoContainer>
+                        </LocalizationProvider>
+                </div>
+                <div className='vertical-flex'>
+                    <Typography variant='h6'>Time</Typography>
+                    <div className='mt-2'>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <SingleInputTimeRangeField 
+                                sx={{"& input": {
+                                    height: '20px ',
+                                    padding: 2
+                                    },
+                                    width: '13rem'}}
+                                onChange={(value) => handleTime(value)}
+                                value={[dayjs(startTime, 'HH:mm:ss'), dayjs(endTime, 'HH:mm:ss')]}
+                                size="small"
+                                label="From - To" />
+                        </LocalizationProvider>
+                    </div>
+                    
+                </div>
+                
+                {/* <div className='vertical-flex' style={{height: '5rem'}}>
+                    <Typography variant='h6'>
+                        Start: 
+                    </Typography>
+                    <Typography>
+                        {getDate(hostData.primary_date)} {getTimeRange(hostData.start, hostData.end, 'start')}
+                    </Typography>
+                    <Typography variant='h6'>
+                        End: 
+                    </Typography>
+                    <Typography>
+                        {getDate(hostData.primary_end)} {getTimeRange(hostData.start, hostData.end, 'end')}
+                    </Typography>
+                </div> */}
+                    {/* <Typography>Start</Typography>
+                        <Box>
+                            <Select
+                            sx={{borderRadius: '8px', width: '100%', height: '45px'}}
+                            className='mt-1'
+                            size='small'
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={primaryDate}
+                            
+                            onChange={(event) => setPrimaryDate(event.target.value)}
+                            >
+                            {Object.entries(hostData.dates).map(([key, value]) => (
+                                <MenuItem value={String(value)}>{getDate(String(value))}</MenuItem>
+                            ))}
+                            </Select>
+                        </Box> */}
+                        {/* <Typography>Optional Change</Typography>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DemoContainer
                                 sx={{height:'100%'}}
@@ -205,12 +306,17 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
                                         label="From - To" />
                                 </Box>
                             </DemoContainer>
-                        </LocalizationProvider>
-                    </div>
-                    <Button onClick={handleChange}>Confirm Changes</Button>
-                </Box>
-            </Box>
-            <Box sx={{width: '35%'}}>
+                        </LocalizationProvider> */}
+                
+            </div>
+            <div>
+            <Button className='horizontal-center'onClick={handleChange} style={{width: '15rem', color: 'green'}}>Confirm Changes</Button>
+            </div>
+            
+            
+                
+                
+            {/* <Box sx={{width: '35%'}}>
                 <Typography variant='h6' sx={{marginBottom: 1}}>
                     Available Dates
                 </Typography>
@@ -252,7 +358,7 @@ const HostDates: React.FunctionComponent<HostDatesProps> = ({ hostData, status, 
                     </LocalizationProvider>
                     <Button onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleEdit(e, 'add')}>Add Date</Button>
                 </Box>
-            </Box>  
+            </Box>   */}
         </div>
     );
 }

@@ -164,6 +164,4 @@ const TagInput = () => {
 
 };
 
-// Example usage for Dates
-
 export default TagInput;

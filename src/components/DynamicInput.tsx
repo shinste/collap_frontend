@@ -22,7 +22,7 @@ const InputItem = ({ data, setData }: { data: Item, setData: React.Dispatch<Reac
 
   return (
     <Chip
-      label={data.value.toString()} // Assuming data.value is convertible to string
+      label={data.value.toString()}
       sx={{
         cursor: "pointer",
         margin: "0.5rem 0.5rem 0 0",
@@ -83,7 +83,6 @@ const DynamicInput = ({ data, setData, inputType }: DynamicInputProps) => {
     );
   }
 
-  // Return DatePicker if inputType is not "Invite Users"
   return (
     <div>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -91,7 +90,7 @@ const DynamicInput = ({ data, setData, inputType }: DynamicInputProps) => {
       <Box>
         <FormControl>
           <form onSubmit={handleOnSubmit}>
-            <DatePicker // Use DatePicker instead of TextField
+            <DatePicker
               sx={{ width: '12rem', size: 'small'}}
               inputRef={inputRef}
             />

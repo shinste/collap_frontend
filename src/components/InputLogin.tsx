@@ -17,13 +17,6 @@ const InputLogin = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     
-    const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setUsername(e.target.value);
-    };
-    
-    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setPassword(e.target.value);
-    };
     
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -46,26 +39,20 @@ const InputLogin = () => {
     }
 
     return (
-      <div className="bg-light left-box">
-        <div className="vertical-center vertical-flex" style={{textAlign:'center'}}>
-        <div className='center-left'>
-          <div>
+      <div className="bg-light Left-box center">
+          <div className='vertical-center vertical-flex' style={{textAlign:'center'}}>
             <h3>Welcome to Collap!👋</h3>
             <h6>Log in to get started.</h6>
-          </div>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-5 mt-3">
-              <Box>
-                  <TextField label="Username" onChange={handleUsernameChange} size='small' sx={{width: '300px', size: "small"}}/>
-                  <TextField className="mt-3" label="Password" type="password" onChange={handlePasswordChange} size='small' sx={{width: '300px'}}/>
-              </Box>
-            </div>
-              {error && <Typography variant="body1" sx={{ color: 'red' }}>{error}</Typography>}
-              <Button type="submit" variant="contained" color="primary" style={{backgroundColor: "#87976E"}} sx={{ borderRadius: "15px", width: '300px'}}>LogIn</Button>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-5 mt-3 vertical-flex">
+                <TextField className="horizontal-center" label="Username" onChange={(e) => setUsername(e.target.value)} size='small'/>
+                <TextField className="mt-3" label="Password" type="password" onChange={(e) => setPassword(e.target.value)} size='small'/>
+              </div>
+                {error && <Typography variant="body1" sx={{ color: 'red' }}>{error}</Typography>}
+                <Button type="submit" variant="contained" color="primary" style={{backgroundColor: "#87976E"}} sx={{ borderRadius: "15px", width: '300px'}}>LogIn</Button>
             </form>
-          </div>
             <Typography variant="body1" sx={{ fontSize: '12px' }}>New to Collap? <Link to="/registration" className="App-link" color="green">Get started</Link></Typography>
-        </div>
+          </div>
       </div> 
     )
 }

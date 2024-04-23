@@ -1,7 +1,3 @@
-// import {createContext} from 'react'
-
-// export const LoginContext = createContext("");
-
 import { createContext, Dispatch, SetStateAction } from 'react';
 
 interface LoginContextProps {
@@ -11,5 +7,5 @@ interface LoginContextProps {
 
 export const LoginContext = createContext<LoginContextProps>({
   username: '',
-  setUsername: () => {} // a dummy function
+  setUsername: () => {}
 });

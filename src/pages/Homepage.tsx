@@ -8,7 +8,7 @@ const Homepage = () => {
     return (
       <body>
         <HomepageHeader />
-        <div className='flex-container'>
+        <div className='flex-container' style={{marginTop: '4rem'}}>
           <NotificationList />
           <Calendar /> 
         </div>

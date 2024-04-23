@@ -218,37 +218,38 @@ const HostEventActions = () => {
             </div>
             <div style={{width:'80%'}}>
             {Object.entries(hostedData).map(([key, value]) => (
-                    <div style={{width: "100%", height: "60rem", textAlign: 'center', marginBottom: 0, justifyContent: 'center'}}>
+                    <div style={{width: "100%", height: "60rem", textAlign: 'center', marginBottom: 0}}>
                         <Box sx={{ background: '#AFC38E', display:'flex', flexDirection:'column', borderRadius: '8px', width: '100%', height:'75%', marginBottom:2, overflow: 'hidden'}}>
                             <div style={{marginLeft: 35, marginTop: 20, marginBottom: 0}}>
                                 <Typography variant='h5'style={{textAlign: 'left', textTransform: 'capitalize'}}>{String(value["name"])}</Typography>
                             </div>
                             <div style={{display:'flex', height:'83%'}}>
-                                <Box sx={{width:'35%', background: '#FFFFFF', margin: 5, marginBottom: 0, borderRadius:'15px', marginTop: 2 }}>
-                                    <Box sx={{display: 'flex'}}>
+                                <div className='vertical-flex Host-date'>
+                                    <div className='Host-box'>
                                         <HostDates hostData={hostedData[key]} status={status} setStatus={setStatus} />
-                                    </Box>
-                                </Box>
-                                <Box sx={{width:'35%', background: '#FFFFFF', marginTop: 2, marginBottom: 0, borderRadius:'15px'}}>
-                                    <div style={{display: 'flex', flexDirection:'column', textAlign: 'center', margin: 14}}>
+                                    </div>
+                                    <div className='Host-box flex-container'>
                                         <Typography variant='h6' sx={{marginBottom: 1}}>Voting Status</Typography>
                                         {voteData[value["event_id"]] ? (
                                             <Typography>{voteData[value["event_id"]].status}</Typography>
-                                        ) : (
-                                            <Typography>Loading...</Typography>
-                                        )}
+                                            ) : (
+                                                <Typography>Loading...</Typography>
+                                            )}
                                         {voteData[value["event_id"]] && voteData[value["event_id"]].status === "Inactive" && (
-                                        <Button onClick={(e) => {
-                                                            e.preventDefault();
-                                                            handlePushVote(value["event_id"], value["name"]);}}>Start Voting</Button>
-                                        )}
+                                            <Button onClick={(e) => {
+                                                                     e.preventDefault();
+                                                                     handlePushVote(value["event_id"], value["name"]);}}>Start Voting</Button>
+                                            )}
                                         {voteData[value["event_id"]] && voteData[value["event_id"]].status === "Active" ? (
                                             <div>
                                                 <Typography>Voters: {voteData[value["event_id"]].total_users.length - voteData[value["event_id"]].waiting.length} / {voteData[value["event_id"]].total_users.length}</Typography>
                                                 <Button onClick={(e) => {
-                                                e.preventDefault();
-                                                handlePushVote(value["event_id"], value["name"]);
-                                                }}>Restart Voting</Button>
+                                                                            e.preventDefault();
+                                                                            handlePushVote(value["event_id"], value["name"]);
+                                                                        }
+                                                                }>
+                                                    Restart Voting
+                                                </Button>
                                                 <Typography sx={{ fontSize: 10, color: 'red' }}>This will delete all the current Votes for this event!</Typography>
                                                 {voteData[value["event_id"]].dates.length > 0 ? (
                                                     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -276,8 +277,8 @@ const HostEventActions = () => {
                                         <RankDates event_id={String(hostedData[key].event_id)} />
                                     </Box>
                                         
-                                    </div>
-                                </Box>
+                                </div>
+                                </div>
                                 <Box sx={{width:'20%', background: '#FFFFFF', margin: 5, marginBottom: 0, borderRadius:'15px', marginTop: 2}}>
                                     <Box sx={{margin: 2, display: 'flex', flexDirection: 'column', height: '100%'}}>
                                         <Box sx={{marginBottom:3, textAlign: 'left'}}>
