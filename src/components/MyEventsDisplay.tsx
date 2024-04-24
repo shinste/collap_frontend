@@ -24,7 +24,7 @@ const MyEventsDisplay = () => {
     end: string;
   };
 
-  const [eventData, setEventData] = useState<Record<string, EventData>>({}); // Use the EventData type
+  const [eventData, setEventData] = useState<Record<string, EventData>>({});
   const [error, setError] = useState('');
   const [status, setStatus] = useState(false);
   const [open, setOpen] = useState(false);
@@ -156,7 +156,7 @@ const MyEventsDisplay = () => {
                                     <Button sx={{color: 'green'}} onClick={() => setOpen(false)}>Cancel</Button>
                                     <Button sx={{color: 'red'}} onClick={() => {
                                                                                 handleLeave(value['event_id'], key, value['name']); // Call the action/function
-                                                                                setOpen(false); // Close the dialog
+                                                                                setOpen(false);
                                                                         }} autoFocus>
                                         Leave
                                     </Button>

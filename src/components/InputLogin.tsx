@@ -1,5 +1,4 @@
 import React, { useState, useContext} from 'react';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField'
@@ -43,6 +42,7 @@ const InputLogin = () => {
           <div className='vertical-center vertical-flex' style={{textAlign:'center'}}>
             <h3>Welcome to Collap!👋</h3>
             <h6>Log in to get started.</h6>
+
             <form onSubmit={handleSubmit}>
               <div className="mb-5 mt-3 vertical-flex">
                 <TextField className="horizontal-center" label="Username" onChange={(e) => setUsername(e.target.value)} size='small'/>
@@ -52,7 +52,11 @@ const InputLogin = () => {
                 <Button type="submit" variant="contained" color="primary" style={{backgroundColor: "#87976E"}} sx={{ borderRadius: "15px", width: '300px'}}>LogIn</Button>
             </form>
             <Typography variant="body1" sx={{ fontSize: '12px' }}>New to Collap? <Link to="/registration" className="App-link" color="green">Get started</Link></Typography>
+            <div className='horizontal-center'>
+              <Typography style={{fontWeight: 'bold', fontSize: '12px', width: '15rem'}}>For employers checking this project out, please use usernames githubexample1, githubexample2, githubexample3 for optimal display of features. Passwords for each account are their usernames</Typography>
+            </div>
           </div>
+          
       </div> 
     )
 }

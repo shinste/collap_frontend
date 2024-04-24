@@ -39,8 +39,16 @@ const TagInput = () => {
     try {
       const start = e[0].$d
       const end = e[1].$d
-      setDateStart(start.getFullYear() + '-' + (start.getMonth() + 1) + '-' + start.getDate())
-      setDateEnd(end.getFullYear() + '-' + (end.getMonth() + 1) + '-' + end.getDate())
+      let startMonth;
+      let endMonth;
+      if (start.getMonth() + 1 < 10) {
+        startMonth = "0" + (start.getMonth() + 1)
+      }
+      if (end.getMonth() + 1 < 10) {
+        endMonth = "0" + (end.getMonth() + 1)
+      }
+      setDateStart(start.getFullYear() + '-' + startMonth + '-' + start.getDate());
+      setDateEnd(end.getFullYear() + '-' + endMonth + '-' + end.getDate())
       setTimeStart(String(start).split(' ')[4])
       setTimeEnd(String(end).split(' ')[4])
     } catch {}
@@ -82,7 +90,7 @@ const TagInput = () => {
         }
       } catch (errors) {
         console.error('Error:', errors);
-        setError('Invalid Request');
+        setError(String(errors));
       }
     };
     
