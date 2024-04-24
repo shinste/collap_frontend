@@ -10,7 +10,6 @@ import getNotifications from '../functions/getNotifications';
 const NotificationList = () => {
 
     const [eventData, setEventData] = useState('');
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const storedUsername = localStorage.getItem('username') || '';
 
     useEffect(() => {

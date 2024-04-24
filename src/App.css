@@ -102,9 +102,11 @@
   width:60rem;
   background-color: #FFFFFF;
   border-radius:15px; 
-  margin-top: 1rem;
   text-align: 'center';
+  height: 35rem;
+  box-shadow: 1px 1px #777777;
 }
+
 .sub_div {
   position:absolute;
   bottom: 0px;

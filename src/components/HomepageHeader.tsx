@@ -27,8 +27,6 @@ const theme = createTheme({
 const HomepageHeader = () => {
   const navigate = useNavigate()
   const {username} = useContext(LoginContext)
-
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -44,8 +42,6 @@ const HomepageHeader = () => {
         localStorage.setItem('username', username);
     }
   }, [username]);
-
-  const storedUsername = localStorage.getItem('username') || '';
 
 
   const handleLogOut = () => {

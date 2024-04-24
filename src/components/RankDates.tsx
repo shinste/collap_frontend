@@ -16,7 +16,7 @@ const RankDates: React.FunctionComponent<RankedDateProp> = ({event_id}) => {
             const response = await getApi(`ranked/?event_id=${encodeURIComponent(event_id)}`);
             if (response.ok) {
             const fetchedRankData = await response.json();
-            setRankedData(fetchedRankData); // Update state with fetched data
+            setRankedData(fetchedRankData);
             } else {
             const errorData = await response.json();
             const errorMessage = errorData.error[0];
@@ -37,7 +37,8 @@ const RankDates: React.FunctionComponent<RankedDateProp> = ({event_id}) => {
     return (
         <div>
             <Typography variant='h6'>Recommended Dates</Typography>
-            <div className='vertical-flex' style={{height: '150px', overflowY:'auto'}}>
+            <Typography>These are ranked by the dates made available by users, NOT by their votes</Typography>
+            <div className='vertical-flex' style={{height: '12rem', overflowY:'auto'}}>
             <List>
                 {Object.entries(rankedData).map(([key, value]) => (
                     <div className='vertical-flex my-2'>

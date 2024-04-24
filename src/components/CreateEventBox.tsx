@@ -67,7 +67,6 @@ const TagInput = () => {
         if (response.ok) {
           const data = await response.json();
           console.log('User created:', data);
-        //   setSuccess(true)
           navigate('/homepage', { replace: true})
         } else {
             const errorData = await response.json();
@@ -78,14 +77,11 @@ const TagInput = () => {
             } else{
                 setError(message)
             }
-            
-            // setError(message)
             console.error('Failed to create event:', message);
             console.log(eventData)
         }
       } catch (errors) {
         console.error('Error:', errors);
-        // setSuccess(false)
         setError('Invalid Request');
       }
     };

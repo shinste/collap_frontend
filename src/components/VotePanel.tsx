@@ -91,7 +91,6 @@ const VotePanel = ({ key, status, dates, event_id }: JoinProps) => {
         const data = await response.json();
         console.log('Vote Recorded:', data);
         status('Voted Successfully');
-      //   setSuccess(true)
       } else {
           const errorData = await response.json();
           const message = errorData.error
@@ -101,14 +100,11 @@ const VotePanel = ({ key, status, dates, event_id }: JoinProps) => {
           } else{
               setError(message)
           }
-          
-          // setError(message)
           console.error('Failed to create event:', message);
           console.log(voteData)
       }
     } catch (errors) {
       console.error('Error:', errors);
-      // setSuccess(false)
       setError('You have already voted for this date!');
     }
   };
@@ -215,7 +211,5 @@ const VotePanel = ({ key, status, dates, event_id }: JoinProps) => {
     </div>
   );
 }
-
-// Helper functions: not, intersection, union (to be defined)
 
 export default VotePanel;
