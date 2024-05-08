@@ -284,7 +284,7 @@ const HostEventActions = () => {
                                         </Box>
                                         <Box>
                                             {value["participants"].map((participant, index) => (
-                                                <div className="scrollable-box" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxHeight: '80%' }}>
+                                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxHeight: '80%' }}>
                                                     <Typography>{participant}</Typography>
                                                     <Box>
                                                         <Button sx={{ textAlign: 'right' }} onClick={() => handleLeave(participant, value["event_id"], value["name"])}> KICK </Button>
