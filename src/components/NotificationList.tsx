@@ -16,8 +16,8 @@ const NotificationList = () => {
     }, []);
 
     return (
-        <div className='mx-3'>
-            <Typography variant="h4" className='mb-3 mt-3 mx-3'>
+        <div className='mx-3 mt-3'>
+            <Typography variant="h4" className='mb-3 mt-5 mx-3'>
                 Notifications
             </Typography>
             <Box sx={{height: '100vh', overflowY: 'auto'}}>
