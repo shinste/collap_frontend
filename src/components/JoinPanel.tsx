@@ -1,10 +1,14 @@
 import React, { useState, useEffect} from 'react';
-import { FormControl, Button, Typography } from "@mui/material";
+import { FormControl, Button, Typography, Divider} from "@mui/material";
 import DynamicInput from './DynamicInput';
 import getEventInfo from '../functions/getEventInfo';
 import formatTimeRange from '../functions/getTimeRange';
 import getDate from '../functions/getDate';
 import postApi from '../functions/postApi';
+import Clock from '../images/Clock.png';
+import People from '../images/People.png';
+import Date from '../images/Date.png';
+
 
 interface JoinProps {
     key: number;
@@ -81,17 +85,33 @@ const JoinPanel = ({ key, eventInfo, status }: JoinProps) => {
     }
     return (
         <div style={{height: '60%'}}>
-            <div className='mt-5'>
-                <h3>Event Information [{String(previewData["name"])}]</h3>
-                <Typography variant='h6'>
-                    Current Primary Date: {getDate(String(previewData["primary_date"]))} - {getDate(String(previewData["primary_end"]))}
-                </Typography>
-                <Typography variant='h6'>
-                    Current Primary Time: {formatTimeRange(String(previewData["start"]), String(previewData["end"]))}
-                </Typography>
-                <Typography variant='h6'>
-                    Participants: {String(previewData["participants"])}
-                </Typography>
+            <div className='mt-3'>
+                <h2>Event Information <span style={{fontWeight: 'bold'}}>[{String(previewData["name"])}]</span></h2>
+                <div id="Join-info-div">
+                    <Divider />
+                    <div className='Join-info'>
+                        <img src={Date} height='30px' style={{marginRight: '10px'}} alt=""/>
+                        <h4>
+                            Current Primary Date: {getDate(String(previewData["primary_date"]))} - {getDate(String(previewData["primary_end"]))}
+                        </h4>  
+                    </div>
+                    <Divider/>
+                    <div className='Join-info'>
+                        <img src={Clock} height='30px' style={{marginRight: '10px'}} alt=""/>
+                        <h4>
+                            Current Primary Time: {formatTimeRange(String(previewData["start"]), String(previewData["end"]))}
+                        </h4>
+                    </div>
+                    <Divider/>
+                    <div className='Join-info'>
+                        <img src={People} height='30px' style={{marginRight: '10px'}} alt=""/>
+                        <h4>
+                            Participants: {String(previewData["participants"])}
+                        </h4>  
+                    </div>
+                    <Divider/>
+                </div>
+                
             </div>
             <div className='relative-center'>
                 <div className='mt-2'>

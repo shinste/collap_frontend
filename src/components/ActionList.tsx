@@ -95,10 +95,10 @@ const ActionList = () => {
 	}
 
 	return (
-		<div className='flex-container' style={{width:'100%', height: '95vh', marginLeft: 70}}>
+		<div className='flex-container' style={{width:'100%', height: '95vh', marginLeft: '30px'}}>
 			<div className='mt-5' style={{width: '30%'}} >
 				<Box sx={{width: '30rem', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'left'}}>
-					<Typography variant="h4" style={{ marginBottom: '1rem' }}>
+					<Typography variant="h4" style={{ marginBottom: '1rem', marginLeft: '30px'}}>
 						Notifications
 					</Typography>
 					<Box sx={{height: '80%', overflowY: 'auto'}}>
@@ -113,31 +113,31 @@ const ActionList = () => {
 														<div>
 															{key === action && (
 																<div style={{marginBottom: 10}}>
-																	<Typography>Actions</Typography>
+																	<h3 style={{textAlign: 'center'}}>Actions</h3>
 																</div>
 															)}
 															{key === missed && (
 																<div style={{marginBottom: 10}}>
-																	<Typography>What you missed</Typography>
+																	<h3 style={{textAlign: 'center'}}>What you missed</h3>
 																</div>
 															)}
-															<Box sx={{ border: '2px solid #A8A8A8', borderRadius: '15px', width: '25rem', background:'#FFFFFF' }}>
+															<Box sx={{ border: '2px solid #A8A8A8', borderRadius: '15px', width: '25rem', background:'#FFFFFF', marginLeft: 'auto', marginRight: 'auto'}}>
 																<div key={nestedKey}>
 																	<ListItem divider>
 																		<ListItemText primary={`${value}`} secondary={!value.includes('You must vote') ? null : (<Typography variant="subtitle2" color="error">Mandatory</Typography>)} style={{textAlign:'center'}}/>
 																	</ListItem>
 																	<div className='flex-container' style={{justifyContent:'center'}}>
 																		{value.includes("You have been invited") && (
-																			<Button className='mx-4' onClick={() => handleJoin(key, eventData[key])}>
+																			<Button sx={{color: '#99BE50'}} className='mx-4' onClick={() => handleJoin(key, eventData[key])}>
 																				Join
 																			</Button>
 																		)}
 																		{!value.includes('You must vote') ? (
-																			<Button className='mx-4' onClick={() => handleDismiss(eventData[key])}>
+																			<Button sx={{color: 'gray'}} className='mx-4' onClick={() => handleDismiss(eventData[key])}>
 																				Dismiss
 																			</Button>
 																		) : (
-																			<Button onClick={() => handleVote(key, eventData[key])}>Vote</Button>
+																			<Button sx={{color: '#99BE50'}}onClick={() => handleVote(key, eventData[key])}>Vote</Button>
 																		)}
 																	</div>
 																</div>
